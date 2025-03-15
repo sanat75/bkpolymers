@@ -1,12 +1,98 @@
-import React from "react";
-import { Box, Typography, Container, Grid, Paper, Divider, Avatar } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Container, Grid, Paper, Divider, Avatar, Collapse, IconButton } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import RecyclingIcon from "@mui/icons-material/Recycling";
 import EthicsIcon from "@mui/icons-material/Handshake";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import industryphoto from '../assets/industryphoto.jpg';
+import harshdeep from '../assets/harshdeep.jpg';
+import chandeep from '../assets/chandeep.jpg';
+import satinder from '../assets/satinder.jpg';
+
+// Leadership Card Component
+const LeadershipCard = ({ name, title, description, photo }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  return (
+    <Paper 
+      elevation={3} 
+      sx={{ 
+        p: 4, 
+        height: "100%", 
+        textAlign: "center",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        "&:hover": {
+          boxShadow: 6,
+          transform: "translateY(-5px)"
+        }
+      }}
+      onClick={handleExpandClick}
+    >
+      <Avatar
+        src={photo}
+        alt={name}
+        sx={{ width: 120, height: 120, mx: "auto", mb: 2, border: "4px solid #0d47a1" }}
+      />
+      <Typography variant="h6" sx={{ color: "#0d47a1", mb: 1 }}>
+        {name}
+      </Typography>
+      <Typography variant="subtitle1" sx={{ mb: 2, color: "text.secondary" }}>
+        {title}
+      </Typography>
+      
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
+        <IconButton 
+          size="small"
+          sx={{ 
+            bgcolor: "#e3f2fd", 
+            "&:hover": { bgcolor: "#bbdefb" }
+          }}
+        >
+          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </IconButton>
+      </Box>
+      
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Box sx={{ mt: 2, pt: 2, borderTop: "1px solid #e0e0e0" }}>
+          <Typography variant="body2">
+            {description}
+          </Typography>
+        </Box>
+      </Collapse>
+    </Paper>
+  );
+};
 
 function AboutUs() {
+  // Leadership team data
+  const leadershipTeam = [
+    {
+      name: "Satinder Singh",
+      title: "Founder & Chairperson",
+      description: "With over 30 years of industry experience, Satinder has been the guiding force behind B.K. Polymers' growth and success, establishing the company's reputation for quality and innovation.",
+      photo: satinder
+    },
+    {
+      name: "Chandeep Singh",
+      title: "Director",
+      description: "Chandeep leads our strategic business initiatives, focusing on sustainable growth and market expansion while maintaining our commitment to customer satisfaction and product excellence.",
+      photo: chandeep
+    },
+    {
+      name: "Harshdeep Singh",
+      title: "Director",
+      description: "Harshdeep oversees our manufacturing operations, ensuring adherence to quality standards and efficient production processes while implementing innovative technologies to enhance our capabilities.",
+      photo: harshdeep
+    }
+  ];
+
   return (
     <Container maxWidth="lg">
       {/* Hero Section with Background Image */}
@@ -189,8 +275,8 @@ function AboutUs() {
       
       <Divider sx={{ mb: 6 }} />
       
-       {/* Our Leadership */}
-       <Box sx={{ mb: 6 }}>
+      {/* Our Leadership - Updated Section */}
+      <Box sx={{ mb: 6 }}>
         <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
           Our Leadership
         </Typography>
@@ -199,94 +285,22 @@ function AboutUs() {
         </Typography>
         
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={3} sx={{ p: 4, height: "100%", textAlign: "center" }}>
-              <Avatar
-                src={industryphoto}
-                alt="Satinder Singh"
-                sx={{ width: 120, height: 120, mx: "auto", mb: 2, border: "4px solid #0d47a1" }}
+          {leadershipTeam.map((leader, index) => (
+            <Grid item xs={12} md={4} key={index}>
+              <LeadershipCard 
+                name={leader.name}
+                title={leader.title}
+                description={leader.description}
+                photo={leader.photo}
               />
-              <Typography variant="h6" sx={{ color: "#0d47a1", mb: 1 }}>
-                Satinder Singh
-              </Typography>
-              <Typography variant="subtitle1" sx={{ mb: 2, color: "text.secondary" }}>
-                Founder & Chairperson
-              </Typography>
-              <Typography variant="body2">
-                With over 30 years of industry experience, Satinder has been the guiding force behind B.K. Polymers' growth and success, establishing the company's reputation for quality and innovation.
-              </Typography>
-            </Paper>
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <Paper elevation={3} sx={{ p: 4, height: "100%", textAlign: "center" }}>
-              <Avatar
-                src={industryphoto}
-                alt="Chandeep Singh"
-                sx={{ width: 120, height: 120, mx: "auto", mb: 2, border: "4px solid #0d47a1" }}
-              />
-              <Typography variant="h6" sx={{ color: "#0d47a1", mb: 1 }}>
-                Chandeep Singh
-              </Typography>
-              <Typography variant="subtitle1" sx={{ mb: 2, color: "text.secondary" }}>
-                Director
-              </Typography>
-              <Typography variant="body2">
-                Chandeep leads our strategic business initiatives, focusing on sustainable growth and market expansion while maintaining our commitment to customer satisfaction and product excellence.
-              </Typography>
-            </Paper>
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <Paper elevation={3} sx={{ p: 4, height: "100%", textAlign: "center" }}>
-              <Avatar
-                src={industryphoto}
-                alt="Rajiv Kumar"
-                sx={{ width: 120, height: 120, mx: "auto", mb: 2, border: "4px solid #0d47a1" }}
-              />
-              <Typography variant="h6" sx={{ color: "#0d47a1", mb: 1 }}>
-                Harshdeep Singh
-              </Typography>
-              <Typography variant="subtitle1" sx={{ mb: 2, color: "text.secondary" }}>
-                Director
-              </Typography>
-              <Typography variant="body2">
-                Harshdeep oversees our manufacturing operations, ensuring adherence to quality standards and efficient production processes while implementing innovative technologies to enhance our capabilities.
-              </Typography>
-            </Paper>
-          </Grid>
+            </Grid>
+          ))}
         </Grid>
       </Box>
    
       <Divider sx={{ mb: 6 }} />
-      
-      {/* Contact Information */}
-      {/* <Box sx={{ mb: 6 }}>
-        <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-          Get In Touch With Us
-        </Typography>
-        <Paper elevation={3} sx={{ p: 4, bgcolor: "#f5f5f5" }}>
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" sx={{ mb: 2, color: "#0d47a1" }}>Address:</Typography>
-              <Typography variant="body1" sx={{ mb: 3 }}>
-                A12/4 Naraina Industrial Area, Phase – 1, New Delhi - 110028
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" sx={{ mb: 2, color: "#0d47a1" }}>Connect With Us:</Typography>
-              <Typography variant="body1" sx={{ mb: 1 }}>
-                <strong>Email:</strong> bkpolymers1617@yahoo.com
-              </Typography>
-              <Typography variant="body1">
-                <strong>LinkedIn:</strong> https://www.linkedin.com/company/bk-polymers
-              </Typography>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Box> */}
     </Container>
   );
 }
 
-export default AboutUs
+export default AboutUs;

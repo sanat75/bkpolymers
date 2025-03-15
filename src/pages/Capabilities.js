@@ -5,8 +5,7 @@ import FactoryIcon from "@mui/icons-material/Factory";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import bg2 from "../assets/bg2.webp";
-
+import BuildIcon from "@mui/icons-material/Build";
 
 function Capabilities() {
   const capabilities = [
@@ -68,6 +67,18 @@ function Capabilities() {
         "Technical support for product utilization",
         "Post-sale assistance",
         "Regular client consultations for continuous improvement"
+      ]
+    },
+    {
+      id: 6,
+      title: "Technological Edge",
+      icon: <BuildIcon sx={{ fontSize: 48, color: "#0d47a1" }} />,
+      description: "We continuously invest in cutting-edge technology and innovation to deliver superior packaging solutions.",
+      details: [
+        "State-of-the-art machinery for precision manufacturing",
+        "Modern extruders and converting machines",
+        "Advanced quality testing equipment",
+        "Ongoing research and development initiatives"
       ]
     }
   ];
@@ -139,47 +150,6 @@ function Capabilities() {
           </Grid>
         ))}
       </Grid>
-      
-      {/* Technology Section */}
-      <Box sx={{ mb: 8 }}>
-        <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
-          Our Technological Edge
-        </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <Box 
-              sx={{ 
-                height: "100%", 
-                backgroundImage: `url(${bg2})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: 2,
-                minHeight: "300px"
-              }}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box sx={{ p: 3 }}>
-              <Typography variant="h5" gutterBottom sx={{ color: "#0d47a1", fontWeight: "medium" }}>
-                State-of-the-Art Equipment
-              </Typography>
-              <Typography variant="body1" paragraph>
-                Our manufacturing facility is equipped with the latest machinery that allows us to produce high-quality 
-                packaging materials with precision and consistency. Our modern extruders, converting machines, and quality 
-                testing equipment ensure that every product meets our stringent quality standards.
-              </Typography>
-              <Typography variant="h5" gutterBottom sx={{ color: "#0d47a1", fontWeight: "medium", mt: 3 }}>
-                Innovation-Driven Approach
-              </Typography>
-              <Typography variant="body1">
-                We continuously invest in research and development to stay at the forefront of packaging technology. 
-                Our innovation-driven approach enables us to develop new products and improve existing ones to meet 
-                the evolving needs of our clients across various industries.
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
     </Container>
   );
 }

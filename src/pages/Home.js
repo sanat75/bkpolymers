@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Box, Typography, Container, Grid, Paper, Button } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
@@ -14,6 +14,8 @@ import lg from '../assets/Lg.jpg';
 import samsung from '../assets/samsung.jpeg';
 import voltas from '../assets/voltas.jpg';
 import bg2 from "../assets/bg2.webp";
+import honda from "../assets/honda.jpg";
+import subros from "../assets/subros.jpeg";
 
 function Home() {
   return (
@@ -139,68 +141,7 @@ function Home() {
         </Box>
 
         {/* Clients Section */}
-        <Box sx={{ mb: 6 }}>
-          <Typography 
-            variant="h4" 
-            component="h2" 
-            sx={{ 
-              mb: 3, 
-              textAlign: "center", 
-              fontWeight: "medium", 
-              color: "#0d47a1",
-              fontSize: "2.3rem"      // Larger heading for Clients
-            }}
-          >
-            Our Trusted Clients
-          </Typography>
-          <Typography 
-            variant="body1" 
-            sx={{ 
-              textAlign: "center", 
-              mb: 4, 
-              maxWidth: "800px", 
-              mx: "auto",
-              fontSize: "1.2rem",     // Increased paragraph font
-              lineHeight: 1.6
-            }}
-          >
-            We are proud to serve industry leaders who trust us for their premium packaging solutions.
-          </Typography>
-          
-          <Grid container spacing={2} justifyContent="center" alignItems="center">
-            {/* Client Logos */}
-            <Grid item xs={6} sm={4} md={2} sx={{ textAlign: "center" }}>
-              <Paper elevation={2} sx={{ p: 2, height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Box component="img" src={asianpaints} alt="Asian Paints" sx={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }} />
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={4} md={2} sx={{ textAlign: "center" }}>
-              <Paper elevation={2} sx={{ p: 2, height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Box component="img" src={berger} alt="Berger" sx={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }} />
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={4} md={2} sx={{ textAlign: "center" }}>
-              <Paper elevation={2} sx={{ p: 2, height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Box component="img" src={godrej} alt="Godrej" sx={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }} />
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={4} md={2} sx={{ textAlign: "center" }}>
-              <Paper elevation={2} sx={{ p: 2, height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Box component="img" src={lg} alt="LG" sx={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }} />
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={4} md={2} sx={{ textAlign: "center" }}>
-              <Paper elevation={2} sx={{ p: 2, height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Box component="img" src={samsung} alt="Samsung" sx={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }} />
-              </Paper>
-            </Grid>
-            <Grid item xs={6} sm={4} md={2} sx={{ textAlign: "center" }}>
-              <Paper elevation={2} sx={{ p: 2, height: "120px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Box component="img" src={voltas} alt="Voltas" sx={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }} />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
+        <ScrollingClientsSection />
         
         {/* Mission & Values Combined Section */}
         <Box sx={{ mb: 6, bgcolor: "#f5f5f5", p: 4, borderRadius: 2 }}>
@@ -375,15 +316,12 @@ function Home() {
                 Phone: +1 (647) 819-6399
               </Typography>
 
-
-
               <Typography 
                 variant="body1" 
                 sx={{ 
                   fontSize: "1.2rem", 
                   lineHeight: 1.6 
                 }}
-          
               >
                 Email: bkpolymers1617@yahoo.com
               </Typography>
@@ -393,18 +331,14 @@ function Home() {
                 component={Link} 
                 to="/contact" 
                 variant="contained" 
-                // sx={{ 
-                //   bgcolor: "white", 
-                //   color: "#0d47a1",
-                //   "&:hover": { bgcolor: "#e0e0e0" },
-                //   px: 4,
-                //   py: 1.5,
-                //   fontSize: "1.2rem"   // Larger font on the
-                //   "&:hover": { bgcolor: "#e0e0e0" },
-                //   px: 4,
-                //   py: 1.5,
-                //   fontSize: "1.2rem"   // Larger font on the button
-                // }}
+                sx={{ 
+                  bgcolor: "white", 
+                  color: "#0d47a1",
+                  "&:hover": { bgcolor: "#e0e0e0" },
+                  px: 4,
+                  py: 1.5,
+                  fontSize: "1.2rem"   // Larger font on the button
+                }}
               >
                 Contact Us
               </Button>
@@ -415,5 +349,146 @@ function Home() {
     </Box>
   );
 }
+
+// Define the ScrollingClientsSection component
+const ScrollingClientsSection = () => {
+  const scrollRef = useRef(null);
+  const [cloneCount, setCloneCount] = useState(3); // Number of times to clone the list
+  
+  // Client logos - using the imported images
+  const clients = [
+    { name: "Honda", src: honda },
+    { name: "Subros", src: subros },
+    { name: "Berger", src: berger },
+    { name: "Godrej", src: godrej },
+    { name: "LG", src: lg },
+    { name: "Samsung", src: samsung },
+    { name: "Voltas", src: voltas },
+  ];
+  
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    let animationId;
+    
+    // Calculate total width of a single set of items
+    const calculateTotalWidth = () => {
+      if (!scrollContainer || !scrollContainer.firstChild) return 0;
+      const itemCount = clients.length;
+      const itemWidth = scrollContainer.firstChild.offsetWidth;
+      return itemWidth * itemCount;
+    };
+    
+    let totalWidth = 0;
+    let position = 0;
+    
+    const scroll = () => {
+      if (!scrollContainer) return;
+      
+      // Initialize total width if needed
+      if (totalWidth === 0) {
+        totalWidth = calculateTotalWidth();
+      }
+      
+      position -= 1; // Speed of scrolling (smaller = slower)
+      
+      // When we've scrolled the width of the first set of items, reset position to start
+      if (Math.abs(position) >= totalWidth) {
+        position = 0;
+      }
+      
+      scrollContainer.style.transform = `translateX(${position}px)`;
+      animationId = requestAnimationFrame(scroll);
+    };
+    
+    // Start the animation
+    animationId = requestAnimationFrame(scroll);
+    
+    // Cleanup on unmount
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, [clients]);
+  
+  // Create multiple clones of the clients array
+  const repeatedClients = useMemo(() => {
+    let result = [];
+    for (let i = 0; i < cloneCount; i++) {
+      result = [...result, ...clients];
+    }
+    return result;
+  }, [clients, cloneCount]);
+  
+  return (
+    <Box sx={{ mb: 6, overflow: 'hidden' }}>
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{
+          mb: 3,
+          textAlign: "center",
+          fontWeight: "medium",
+          color: "#0d47a1",
+          fontSize: "2.3rem"
+        }}
+      >
+        Our Trusted Clients
+      </Typography>
+      
+      <Typography
+        variant="body1"
+        sx={{
+          textAlign: "center",
+          mb: 4,
+          maxWidth: "800px",
+          mx: "auto",
+          fontSize: "1.2rem",
+          lineHeight: 1.6
+        }}
+      >
+        We are proud to serve industry leaders who trust us for their premium packaging solutions.
+      </Typography>
+      
+      <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
+        <Box
+          ref={scrollRef}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: 'fit-content',
+          }}
+        >
+          {repeatedClients.map((client, index) => (
+            <Box
+              key={`${client.name}-${index}`}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mx: 2,
+                height: 120,
+                width: 150,
+                backgroundColor: 'white',
+                borderRadius: 1,
+                boxShadow: 1,
+                p: 2
+              }}
+            >
+              <Box 
+                component="img" 
+                src={client.src} 
+                alt={client.name}
+                sx={{ 
+                  maxWidth: '100%', 
+                  maxHeight: '80px', 
+                  objectFit: 'contain' 
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 
 export default Home;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Box, Typography, Container, Grid, Paper, Divider, Card, CardContent } from "@mui/material";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import asianpaints from '../assets/asianpaints.png';
@@ -7,6 +7,8 @@ import godrej from '../assets/godrej.png';
 import lg from '../assets/Lg.jpg';
 import samsung from '../assets/samsung.jpeg';
 import voltas from '../assets/voltas.jpg';
+import honda from "../assets/honda.jpg";
+import subros from "../assets/subros.jpeg";
 
 function Clients() {
   // Actual clients with imported logos
@@ -16,7 +18,9 @@ function Clients() {
     { id: 3, name: "Godrej", logo: godrej },
     { id: 4, name: "LG Electronics", logo: lg },
     { id: 5, name: "Samsung", logo: samsung },
-    { id: 6, name: "Voltas", logo: voltas }
+    { id: 6, name: "Voltas", logo: voltas },
+    { id: 7, name: "Honda", logo: honda },
+    { id: 8, name: "Subros", logo: subros }
   ];
 
   // Updated testimonials matching our actual clients
@@ -25,7 +29,7 @@ function Clients() {
       id: 1,
       text: "B.K. Polymers has been our trusted packaging partner for over 5 years. Their HDPE packaging solutions have significantly improved our product protection during shipping and storage.",
       author: "Supply Chain Manager",
-      company: "Asian Paints"
+      company: "Subros"
     },
     {
       id: 2,
@@ -54,13 +58,57 @@ function Clients() {
         <Divider sx={{ mt: 4, mb: 6, width: "100px", mx: "auto", borderColor: "#0d47a1", borderWidth: 2 }} />
       </Box>
       
-      {/* Industries We Serve */}
+      {/* Industries We Serve - Reordered as requested */}
       <Box sx={{ mb: 8 }}>
         <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
           Industries We Serve
         </Typography>
         
         <Grid container spacing={3} sx={{ mb: 4 }}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
+              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
+                Electronics
+              </Typography>
+              <Typography variant="body2">
+                Our specialized packaging solutions protect sensitive electronic components from 
+                static, moisture, and physical damage during transportation and storage.
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
+              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
+                Automotive
+              </Typography>
+              <Typography variant="body2">
+                We provide specialized packaging solutions for automotive parts that offer excellent 
+                protection against corrosion, scratches, and damage during transit.
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
+              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
+                Industrial & Manufacturing
+              </Typography>
+              <Typography variant="body2">
+                Our heavy-duty packaging materials are designed to withstand the rigors of industrial 
+                environments, protecting components and finished goods throughout the supply chain.
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
+              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
+                Retail & E-commerce
+              </Typography>
+              <Typography variant="body2">
+                We offer customizable packaging options that enhance product presentation while 
+                providing adequate protection for retail and e-commerce applications.
+              </Typography>
+            </Paper>
+          </Grid>
           <Grid item xs={12} md={4}>
             <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
               <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
@@ -83,89 +131,11 @@ function Clients() {
               </Typography>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
-              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
-                Electronics
-              </Typography>
-              <Typography variant="body2">
-                Our specialized packaging solutions protect sensitive electronic components from 
-                static, moisture, and physical damage during transportation and storage.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
-              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
-                Retail & E-commerce
-              </Typography>
-              <Typography variant="body2">
-                We offer customizable packaging options that enhance product presentation while 
-                providing adequate protection for retail and e-commerce applications.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
-              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
-                Industrial & Manufacturing
-              </Typography>
-              <Typography variant="body2">
-                Our heavy-duty packaging materials are designed to withstand the rigors of industrial 
-                environments, protecting components and finished goods throughout the supply chain.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={1} sx={{ p: 3, height: "100%", borderLeft: "4px solid #0d47a1" }}>
-              <Typography variant="h6" gutterBottom sx={{ color: "#0d47a1" }}>
-                Automotive
-              </Typography>
-              <Typography variant="body2">
-                We provide specialized packaging solutions for automotive parts that offer excellent 
-                protection against corrosion, scratches, and damage during transit.
-              </Typography>
-            </Paper>
-          </Grid>
         </Grid>
       </Box>
       
-      {/* Client Logos */}
-      <Box sx={{ mb: 8 }}>
-        <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
-          Trusted By Industry Leaders
-        </Typography>
-        
-        <Grid container spacing={3} justifyContent="center">
-          {clients.map((client) => (
-            <Grid item key={client.id} xs={6} sm={4} md={4} lg={2}>
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: 3, 
-                  textAlign: "center", 
-                  height: "120px", 
-                  display: "flex", 
-                  alignItems: "center", 
-                  justifyContent: "center",
-                  border: "1px solid #e0e0e0",
-                  transition: "transform 0.3s, box-shadow 0.3s",
-                  "&:hover": {
-                    boxShadow: 3,
-                    transform: "scale(1.05)"
-                  }
-                }}
-              >
-                <img 
-                  src={client.logo} 
-                  alt={client.name} 
-                  style={{ maxWidth: "100%", maxHeight: "80px", objectFit: "contain" }} 
-                />
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      {/* Client Logos - Replaced with Scrolling Section */}
+      <ScrollingClientsSection clients={clients} />
       
       {/* Testimonials */}
       <Box sx={{ mb: 8 }}>
@@ -247,5 +217,115 @@ function Clients() {
     </Container>
   );
 }
+
+// Scrolling Clients Section Component
+const ScrollingClientsSection = ({ clients }) => {
+  const scrollRef = useRef(null);
+  const [cloneCount, setCloneCount] = useState(3); // Number of times to clone the list
+  
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    let animationId;
+    
+    // Calculate total width of a single set of items
+    const calculateTotalWidth = () => {
+      if (!scrollContainer || !scrollContainer.firstChild) return 0;
+      const itemCount = clients.length;
+      const itemWidth = scrollContainer.firstChild.offsetWidth;
+      return itemWidth * itemCount;
+    };
+    
+    let totalWidth = 0;
+    let position = 0;
+    
+    const scroll = () => {
+      if (!scrollContainer) return;
+      
+      // Initialize total width if needed
+      if (totalWidth === 0) {
+        totalWidth = calculateTotalWidth();
+      }
+      
+      position -= 1; // Speed of scrolling (smaller = slower)
+      
+      // When we've scrolled the width of the first set of items, reset position to start
+      if (Math.abs(position) >= totalWidth) {
+        position = 0;
+      }
+      
+      scrollContainer.style.transform = `translateX(${position}px)`;
+      animationId = requestAnimationFrame(scroll);
+    };
+    
+    // Start the animation
+    animationId = requestAnimationFrame(scroll);
+    
+    // Cleanup on unmount
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, [clients]);
+  
+  // Create multiple clones of the clients array
+  const repeatedClients = useMemo(() => {
+    let result = [];
+    for (let i = 0; i < cloneCount; i++) {
+      result = [...result, ...clients];
+    }
+    return result;
+  }, [clients, cloneCount]);
+  
+  return (
+    <Box sx={{ mb: 8 }}>
+      <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
+        Trusted By Industry Leaders
+      </Typography>
+      
+      <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
+        <Box
+          ref={scrollRef}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: 'fit-content',
+          }}
+        >
+          {repeatedClients.map((client, index) => (
+            <Box
+              key={`${client.id}-${index}`}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mx: 2,
+                height: 120,
+                width: 160,
+                backgroundColor: 'white',
+                borderRadius: 1,
+                boxShadow: 1,
+                p: 2,
+                transition: "transform 0.3s",
+                "&:hover": {
+                  transform: "scale(1.05)"
+                }
+              }}
+            >
+              <Box 
+                component="img" 
+                src={client.logo} 
+                alt={client.name}
+                sx={{ 
+                  maxWidth: '100%', 
+                  maxHeight: '80px', 
+                  objectFit: 'contain' 
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 
 export default Clients;

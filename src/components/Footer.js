@@ -23,10 +23,10 @@ function Footer() {
             <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2, color: "#0d47a1" }}>
               B.K. POLYMERS
             </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
+            {/* <Typography variant="body2" sx={{ mb: 2 }}>
               Your trusted partner in premium packaging solutions since 1992. We deliver innovative and reliable 
               packaging solutions with quality, sustainability, and innovation.
-            </Typography>
+            </Typography> */}
             <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
               <PhoneIcon sx={{ fontSize: 18, mr: 1, color: "#0d47a1" }} />
               <Typography variant="body2">+91 9810079639</Typography>
@@ -61,6 +61,11 @@ function Footer() {
               <Box component="li" sx={{ mb: 1 }}>
                 <Link component={RouterLink} to="/products" sx={{ textDecoration: "none", color: "#555", "&:hover": { color: "#0d47a1" } }}>
                   Products
+                </Link>
+              </Box>
+              <Box component="li" sx={{ mb: 1 }}>
+                <Link component={RouterLink} to="/about" sx={{ textDecoration: "none", color: "#555", "&:hover": { color: "#0d47a1" } }}>
+                  About Us
                 </Link>
               </Box>
               <Box component="li" sx={{ mb: 1 }}>
