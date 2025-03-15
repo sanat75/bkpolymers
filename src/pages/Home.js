@@ -13,7 +13,7 @@ import godrej from '../assets/godrej.png';
 import lg from '../assets/Lg.jpg';
 import samsung from '../assets/samsung.jpeg';
 import voltas from '../assets/voltas.jpg';
-import bg1 from "../assets/bg1.webp";
+import bg2 from "../assets/bg2.webp";
 
 function Home() {
   return (
@@ -23,7 +23,7 @@ function Home() {
         sx={{
           textAlign: "center",
           py: 10,
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bg1})`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bg2})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -332,7 +332,7 @@ function Home() {
                   lineHeight: 1.6 
                 }}
               >
-                Phone: +91 9810079639 / +91 8920632866
+                Phone: +91 9810079639
               </Typography>
               <Typography 
                 variant="body1" 
@@ -357,9 +357,33 @@ function Home() {
               <Typography 
                 variant="body1" 
                 sx={{ 
+                  mb: 1, 
                   fontSize: "1.2rem", 
                   lineHeight: 1.6 
                 }}
+              >
+                <strong>Harshdeep Singh</strong> - Director
+              </Typography>
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  mb: 2, 
+                  fontSize: "1.2rem", 
+                  lineHeight: 1.6 
+                }}
+              >
+                Phone: +1 (647) 819-6399
+              </Typography>
+
+
+
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  fontSize: "1.2rem", 
+                  lineHeight: 1.6 
+                }}
+          
               >
                 Email: bkpolymers1617@yahoo.com
               </Typography>

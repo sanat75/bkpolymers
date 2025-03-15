@@ -1,39 +1,43 @@
 import React from "react";
 import { Box, Typography, Container, Grid, Paper, Divider, Card, CardContent } from "@mui/material";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import asianpaints from '../assets/asianpaints.png';
+import berger from '../assets/berger.jpg';
+import godrej from '../assets/godrej.png';
+import lg from '../assets/Lg.jpg';
+import samsung from '../assets/samsung.jpeg';
+import voltas from '../assets/voltas.jpg';
 
 function Clients() {
-  // Example clients - replace with actual client list when available
+  // Actual clients with imported logos
   const clients = [
-    { id: 1, name: "Pharmaceutical Company", logo: "/api/placeholder/150/80" },
-    { id: 2, name: "Food Processing Industry", logo: "/api/placeholder/150/80" },
-    { id: 3, name: "Electronics Manufacturer", logo: "/api/placeholder/150/80" },
-    { id: 4, name: "Retail Chain", logo: "/api/placeholder/150/80" },
-    { id: 5, name: "Chemical Industry", logo: "/api/placeholder/150/80" },
-    { id: 6, name: "Textile Company", logo: "/api/placeholder/150/80" },
-    { id: 7, name: "Automotive Parts", logo: "/api/placeholder/150/80" },
-    { id: 8, name: "Construction Materials", logo: "/api/placeholder/150/80" }
+    { id: 1, name: "Asian Paints", logo: asianpaints },
+    { id: 2, name: "Berger Paints", logo: berger },
+    { id: 3, name: "Godrej", logo: godrej },
+    { id: 4, name: "LG Electronics", logo: lg },
+    { id: 5, name: "Samsung", logo: samsung },
+    { id: 6, name: "Voltas", logo: voltas }
   ];
 
-  // Example testimonials
+  // Updated testimonials matching our actual clients
   const testimonials = [
     {
       id: 1,
-      text: "B.K. Polymers has been our trusted packaging partner for over 5 years. Their HDPE packaging solutions have significantly improved our product protection during shipping.",
-      author: "Operations Director",
-      company: "Leading Electronics Manufacturer"
+      text: "B.K. Polymers has been our trusted packaging partner for over 5 years. Their HDPE packaging solutions have significantly improved our product protection during shipping and storage.",
+      author: "Supply Chain Manager",
+      company: "Asian Paints"
     },
     {
       id: 2,
-      text: "The quality and consistency of B.K. Polymers' packaging materials are exceptional. Their customer service team is always responsive and helpful.",
-      author: "Procurement Manager",
-      company: "National Food Processing Company"
+      text: "The quality and consistency of B.K. Polymers' packaging materials are exceptional. Their customer service team is always responsive and their turnaround time is impressive.",
+      author: "Procurement Director",
+      company: "Godrej"
     },
     {
       id: 3,
-      text: "We appreciate B.K. Polymers' ability to customize packaging solutions according to our specific requirements. This has helped us optimize our packaging process.",
-      author: "Supply Chain Head",
-      company: "Pharmaceutical Enterprise"
+      text: "We appreciate B.K. Polymers' ability to customize packaging solutions according to our specific requirements. This has helped us optimize our packaging process and reduce waste.",
+      author: "Operations Head",
+      company: "Samsung"
     }
   ];
 
@@ -134,7 +138,7 @@ function Clients() {
         
         <Grid container spacing={3} justifyContent="center">
           {clients.map((client) => (
-            <Grid item key={client.id} xs={6} sm={3} md={3}>
+            <Grid item key={client.id} xs={6} sm={4} md={4} lg={2}>
               <Paper 
                 elevation={0} 
                 sx={{ 
@@ -155,7 +159,7 @@ function Clients() {
                 <img 
                   src={client.logo} 
                   alt={client.name} 
-                  style={{ maxWidth: "100%", maxHeight: "80px" }} 
+                  style={{ maxWidth: "100%", maxHeight: "80px", objectFit: "contain" }} 
                 />
               </Paper>
             </Grid>

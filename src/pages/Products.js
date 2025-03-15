@@ -1,5 +1,8 @@
 import React from "react";
 import { Box, Typography, Container, Grid, Card, CardContent, CardMedia, Divider } from "@mui/material";
+import ldpe from "../assets/ldpe.avif";
+import lldpe from "../assets/lldpe.webp";
+import hdpe from "../assets/hdpe.jpg";
 
 function Products() {
   const products = [
@@ -12,7 +15,7 @@ function Products() {
         "Durable and flexible garbage bags",
         "Food packaging and hospital supplies"
       ],
-      image: "/api/placeholder/400/250"
+      image: ldpe
     },
     {
       id: 2,
@@ -23,7 +26,7 @@ function Products() {
         "Heavy-Duty Bags for carrying heavy items",
         "Protective packaging for shipping"
       ],
-      image: "/api/placeholder/400/250"
+      image: lldpe
     },
     {
       id: 3,
@@ -34,7 +37,7 @@ function Products() {
         "Retail and Consumer Goods packaging",
         "Protective coverings for building materials"
       ],
-      image: "/api/placeholder/400/250"
+      image: hdpe
     }
   ];
 

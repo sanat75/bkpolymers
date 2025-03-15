@@ -5,6 +5,8 @@ import FactoryIcon from "@mui/icons-material/Factory";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import bg2 from "../assets/bg2.webp";
+
 
 function Capabilities() {
   const capabilities = [
@@ -148,7 +150,7 @@ function Capabilities() {
             <Box 
               sx={{ 
                 height: "100%", 
-                backgroundImage: "url('/api/placeholder/600/400')",
+                backgroundImage: `url(${bg2})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 borderRadius: 2,
