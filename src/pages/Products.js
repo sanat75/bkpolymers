@@ -261,7 +261,7 @@ function Products() {
       </Box>
 
       
-      {/* Capabilities Section */}
+      {/* Capabilities Section
       <Box sx={{ mb: 8 }}>
         <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
           Our Capabilities
@@ -315,7 +315,7 @@ function Products() {
             </Box>
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
     </Container>
   );
 }
