@@ -106,7 +106,7 @@ function Products() {
       {/* Packaging Products Section */}
       <Box sx={{ mb: 6 }}>
         <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
-          Packaging
+          Packaging Products
         </Typography>
         <Grid container spacing={4} sx={{ mb: 8 }}>
           {products.slice(0, 3).map((product) => (
