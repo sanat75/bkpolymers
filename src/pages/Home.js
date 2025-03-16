@@ -16,6 +16,8 @@ import voltas from '../assets/voltas.jpg';
 import bg2 from "../assets/bg2.webp";
 import honda from "../assets/honda.jpg";
 import subros from "../assets/subros.jpeg";
+import wybor from "../assets/wybor.jpg";
+
 
 function Home() {
   return (
@@ -364,6 +366,7 @@ const ScrollingClientsSection = () => {
     { name: "LG", src: lg },
     { name: "Samsung", src: samsung },
     { name: "Voltas", src: voltas },
+    { name: "Wybor", src: wybor },
   ];
   
   useEffect(() => {

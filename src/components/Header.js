@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { 
-  AppBar, 
-  Toolbar, 
-  Typography, 
-  Button, 
-  Box, 
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
   Container,
   IconButton,
   Drawer,
@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link as RouterLink } from "react-router-dom";
+import bkp2 from "../assets/bkp2.webp";
 
 function Navbar() {
   const theme = useTheme();
@@ -37,7 +38,15 @@ function Navbar() {
   
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2, fontWeight: "bold" }}>
+      <Typography variant="h6" sx={{ my: 2, fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <img 
+          src={bkp2} 
+          alt="B.K. Polymers Logo" 
+          style={{ 
+            height: "40px", 
+            marginRight: "10px" 
+          }} 
+        />
         B.K. POLYMERS
       </Typography>
       <List>
@@ -58,15 +67,23 @@ function Navbar() {
             variant="h6"
             component={RouterLink}
             to="/"
-            sx={{ 
-              display: "flex", 
-              alignItems: "center", 
+            sx={{
+              display: "flex",
+              alignItems: "center",
               fontWeight: "bold",
               color: "white",
               textDecoration: "none",
               flexGrow: 1
             }}
           >
+            <img 
+              src={bkp2} 
+              alt="B.K. Polymers Logo" 
+              style={{ 
+                height: "40px", 
+                marginRight: "10px" 
+              }} 
+            />
             B.K. POLYMERS
           </Typography>
           
@@ -82,11 +99,11 @@ function Navbar() {
           ) : (
             <Box sx={{ display: "flex" }}>
               {navItems.map((item) => (
-                <Button 
-                  key={item.name} 
-                  component={RouterLink} 
-                  to={item.path} 
-                  sx={{ 
+                <Button
+                  key={item.name}
+                  component={RouterLink}
+                  to={item.path}
+                  sx={{
                     color: "white",
                     mx: 1,
                     "&:hover": {
@@ -97,13 +114,13 @@ function Navbar() {
                   {item.name}
                 </Button>
               ))}
-              <Button 
-                variant="contained" 
-                component={RouterLink} 
-                to="/contact" 
-                sx={{ 
-                  ml: 2, 
-                  bgcolor: theme.palette.secondary.main, 
+              <Button
+                variant="contained"
+                component={RouterLink}
+                to="/contact"
+                sx={{
+                  ml: 2,
+                  bgcolor: theme.palette.secondary.main,
                   "&:hover": { bgcolor: theme.palette.secondary.dark }
                 }}
               >

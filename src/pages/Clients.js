@@ -9,11 +9,12 @@ import samsung from '../assets/samsung.jpeg';
 import voltas from '../assets/voltas.jpg';
 import honda from "../assets/honda.jpg";
 import subros from "../assets/subros.jpeg";
+import wybor from "../assets/wybor.jpg";
 
 function Clients() {
   // Actual clients with imported logos
   const clients = [
-    { id: 1, name: "Asian Paints", logo: asianpaints },
+    { id: 1, name: "Wybor", logo: wybor },
     { id: 2, name: "Berger Paints", logo: berger },
     { id: 3, name: "Godrej", logo: godrej },
     { id: 4, name: "LG Electronics", logo: lg },
@@ -23,25 +24,25 @@ function Clients() {
     { id: 8, name: "Subros", logo: subros }
   ];
 
-  // Updated testimonials matching our actual clients
+  // Updated testimonials with the new content
   const testimonials = [
     {
       id: 1,
-      text: "B.K. Polymers has been our trusted packaging partner for over 5 years. Their HDPE packaging solutions have significantly improved our product protection during shipping and storage.",
-      author: "Supply Chain Manager",
-      company: "Subros"
+      text: "We have been partnering with B.K. Polymers for the past 15 years, and their packaging solutions have consistently ensured the safety of our electronic products. Satinder and his team are committed to quality, and their expertise has significantly improved our product protection during shipping and storage.",
+      author: "Mahesh D. Khanna",
+      company: "Managing Director, Kanchan Plast Industries"
     },
     {
       id: 2,
-      text: "The quality and consistency of B.K. Polymers' packaging materials are exceptional. Their customer service team is always responsive and their turnaround time is impressive.",
-      author: "Procurement Director",
-      company: "Godrej"
+      text: "We highly value B.K. Polymers' expertise in customizing packaging solutions to meet our specific needs. Their tailored approach has streamlined our packaging process, minimized waste, and enhanced efficiency thus making a significant impact on our operations.",
+      author: "Manoj M.",
+      company: "General Manager, Wybor Tech"
     },
     {
       id: 3,
-      text: "We appreciate B.K. Polymers' ability to customize packaging solutions according to our specific requirements. This has helped us optimize our packaging process and reduce waste.",
-      author: "Operations Head",
-      company: "Samsung"
+      text: "B.K. Polymers has been our trusted partner for years, consistently delivering high-quality packaging solutions. The quality and consistency of its packaging materials are exceptional. Their attention to detail, durability, and commitment to excellence set them apart in the industry.",
+      author: "Sartesh Kumar",
+      company: "Plant Head, MarkTech Polymers"
     }
   ];
 
@@ -137,7 +138,7 @@ function Clients() {
       {/* Client Logos - Replaced with Scrolling Section */}
       <ScrollingClientsSection clients={clients} />
       
-      {/* Testimonials */}
+      {/* Testimonials - Updated with bold formatting */}
       <Box sx={{ mb: 8 }}>
         <Typography variant="h4" component="h2" sx={{ textAlign: "center", mb: 4, fontWeight: "medium" }}>
           Client Testimonials
@@ -158,7 +159,7 @@ function Clients() {
                       transform: "scaleX(-1)"
                     }} 
                   />
-                  <Typography variant="body1" sx={{ pl: 2, mb: 3, fontStyle: "italic" }}>
+                  <Typography variant="body1" sx={{ pl: 2, mb: 3, fontStyle: "italic", fontWeight: "bold" }}>
                     "{testimonial.text}"
                   </Typography>
                   <Box sx={{ mt: "auto" }}>
