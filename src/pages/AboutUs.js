@@ -80,8 +80,8 @@ const LeadershipCard = ({ name, title, description, photo }) => {
             {title}
           </Typography>
           
-          <Typography variant="body2" sx={{ color: "text.secondary", mt: "auto" }}>
-            (Click to read more)
+          <Typography variant="body2" sx={{ color: "text.primary", mt: "auto" }}>
+            Read more
           </Typography>
         </Box>
       ) : (
@@ -104,8 +104,8 @@ const LeadershipCard = ({ name, title, description, photo }) => {
           <Typography variant="body1" sx={{ mb: 3 }}>
             {description}
           </Typography>
-          <Typography variant="body2" sx={{ mt: "auto", color: "text.secondary" }}>
-            (Click to flip back)
+          <Typography variant="body2" sx={{ mt: "auto", color: "text.primary" }}>
+            Return 
           </Typography>
         </Box>
       )}
