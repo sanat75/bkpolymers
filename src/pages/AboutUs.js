@@ -6,7 +6,7 @@ import RecyclingIcon from "@mui/icons-material/Recycling";
 import EthicsIcon from "@mui/icons-material/Handshake";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import industryphoto from '../assets/industryphoto.jpg';
+import industryphoto from '../assets/newfactory.jpg';
 import harshdeep from '../assets/harshdeep.jpg';
 import chandeep2 from '../assets/chandeep2.jpg';
 import satinder3 from '../assets/satinder3.jpg';
