@@ -1,3 +1,4 @@
+// 1. Add WhatsApp icon to imports
 import React from "react";
 import { 
   Box, 
@@ -13,6 +14,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp"; // Add this import
 import makeinindia from "../assets/makeinindia.png";
 
 function Footer() {
@@ -47,8 +49,19 @@ function Footer() {
               >
                 <LinkedInIcon />
               </IconButton>
+              {/* Add WhatsApp icon button here */}
+              <IconButton 
+                component="a" 
+                href="https://wa.me/919810369639" 
+                target="_blank"
+                sx={{ color: "#25D366" }}
+              >
+                <WhatsAppIcon />
+              </IconButton>
             </Box>
           </Grid>
+          
+          {/* Rest of the code remains the same */}
           
           {/* Quick Links */}
           <Grid item xs={12} sm={6} md={4}>
