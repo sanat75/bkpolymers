@@ -5,6 +5,21 @@ import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PersonIcon from "@mui/icons-material/Person";
+import { Helmet } from 'react-helmet';
+
+function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>BK Polymers - High Quality Polymer Products</title>
+        <meta name="description" content="BK Polymers offers premium polymer products for industrial and commercial applications." />
+        <meta name="keywords" content="polymers, industrial polymers, plastic manufacturing" />
+        <link rel="canonical" href="https://www.bkpolymers.in" />
+      </Helmet>
+      {/* Your component content */}
+    </>
+  );
+}
 
 function Contact() {
   // Effect hook to load the Tally script

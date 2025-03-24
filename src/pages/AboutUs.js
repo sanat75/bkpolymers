@@ -10,6 +10,21 @@ import industryphoto from '../assets/newfactory.jpg';
 import harshdeep from '../assets/harshdeep.jpg';
 import chandeep2 from '../assets/chandeep2.jpg';
 import satinder3 from '../assets/satinder3.jpg';
+import { Helmet } from 'react-helmet';
+
+function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>BK Polymers - High Quality Polymer Products</title>
+        <meta name="description" content="BK Polymers offers premium polymer products for industrial and commercial applications." />
+        <meta name="keywords" content="polymers, industrial polymers, plastic manufacturing" />
+        <link rel="canonical" href="https://www.bkpolymers.in" />
+      </Helmet>
+      {/* Your component content */}
+    </>
+  );
+}
 // Leadership Card Component with photo zoom adjustments for specific individuals
 const LeadershipCard = ({ name, title, description, photo }) => {
   const [isFlipped, setIsFlipped] = useState(false);

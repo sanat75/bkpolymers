@@ -10,6 +10,21 @@ import voltas from '../assets/voltas.jpg';
 import honda from "../assets/honda.jpg";
 import subros from "../assets/subros.jpeg";
 import wybor from "../assets/wybor.jpg";
+import { Helmet } from 'react-helmet';
+
+function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>BK Polymers - High Quality Polymer Products</title>
+        <meta name="description" content="BK Polymers offers premium polymer products for industrial and commercial applications." />
+        <meta name="keywords" content="polymers, industrial polymers, plastic manufacturing" />
+        <link rel="canonical" href="https://www.bkpolymers.in" />
+      </Helmet>
+      {/* Your component content */}
+    </>
+  );
+}
 
 function Clients() {
   // Actual clients with imported logos

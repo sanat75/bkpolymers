@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Box, Typography, Container, Grid, Paper, Button } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
@@ -5,8 +6,6 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import RecyclingIcon from "@mui/icons-material/Recycling";
 import BusinessIcon from "@mui/icons-material/Business";
 import { Link } from "react-router-dom";
-
-// Import client logos
 import asianpaints from '../assets/asianpaints.png';
 import berger from '../assets/berger.jpg';
 import godrej from '../assets/godrej.png';
@@ -17,6 +16,23 @@ import bg2 from "../assets/bg2.webp";
 import honda from "../assets/honda.jpg";
 import subros from "../assets/subros.jpeg";
 import wybor from "../assets/wybor.jpg";
+
+function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>BK Polymers - High Quality Polymer Products</title>
+        <meta name="description" content="BK Polymers offers premium polymer products for industrial and commercial applications." />
+        <meta name="keywords" content="polymers, industrial polymers, plastic manufacturing" />
+        <link rel="canonical" href="https://www.bkpolymers.in" />
+      </Helmet>
+      {/* Your component content */}
+    </>
+  );
+}
+
+// Import client logos
+
 
 
 function Home() {

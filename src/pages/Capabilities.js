@@ -6,6 +6,21 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import BuildIcon from "@mui/icons-material/Build";
+import { Helmet } from 'react-helmet';
+
+function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>BK Polymers - High Quality Polymer Products</title>
+        <meta name="description" content="BK Polymers offers premium polymer products for industrial and commercial applications." />
+        <meta name="keywords" content="polymers, industrial polymers, plastic manufacturing" />
+        <link rel="canonical" href="https://www.bkpolymers.in" />
+      </Helmet>
+      {/* Your component content */}
+    </>
+  );
+}
 
 function Capabilities() {
   const capabilities = [
