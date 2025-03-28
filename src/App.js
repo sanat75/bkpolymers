@@ -1,7 +1,6 @@
-// App.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home.js';
@@ -10,35 +9,47 @@ import Contact from './pages/Contact.js';
 import Products from './pages/Products.js';
 import Capabilities from './pages/Capabilities.js';
 import Clients from './pages/Clients.js';
+import ScrollToTop from "./ScrollToTop";
+
+
+
+
+
 
 function App() {
+ 
   return (
     <div className="app">
       <Helmet>
         {/* Default meta tags for the entire app */}
         <html lang="en" />
-        <title>Your Website Name | Main Keyword</title>
-        <meta name="description" content="A clear, compelling description of your website in 150-160 characters that includes your main keywords." />
+        <title>BK Polymers | Polymer Packaging</title>
+        <meta name="description" content="BK Polymers delivers premium polymer packaging solutions, including LDPE, HDPE rolls, poly bags, heat shrink films, and flame-retardant materials." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* Open Graph tags for social sharing */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.yourwebsite.com/" />
-        <meta property="og:title" content="Your Website Name | Main Keyword" />
-        <meta property="og:description" content="A clear, compelling description of your website in 150-160 characters." />
-        <meta property="og:image" content="https://www.yourwebsite.com/og-image.jpg" />
+        <meta property="og:title" content="BK Polymers | Polymer Packaging" />
+        <meta property="og:description" content="BK Polymers delivers premium polymer packaging solutions, including LDPE, HDPE rolls, poly bags, heat shrink films, and flame-retardant materials."
+ />
+        <meta property="og:image" content="https://www.bkpolymers.in/og-image.jpg" />
         
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Your Website Name | Main Keyword" />
+        <meta name="twitter:title" content="BK Polymers | Main Keyword" />
         <meta name="twitter:description" content="A clear, compelling description of your website in 150-160 characters." />
-        <meta name="twitter:image" content="https://www.yourwebsite.com/twitter-image.jpg" />
+        <meta name="twitter:image" content="https://www.bkpolymers.in/twitter-image.jpg" />
         
         {/* Canonical URL to prevent duplicate content issues */}
-        <link rel="canonical" href="https://www.yourwebsite.com/" />
+        <link rel="canonical" href="https://www.bkpolymers.in/" />
       </Helmet>
       
+     
+      
       <Header />
+
+      <ScrollToTop />
       
       <main>
         <Routes>

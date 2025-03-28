@@ -274,71 +274,69 @@ function AboutUs() {
       
       <Divider sx={{ mb: 6 }} />
       
-      {/* Mission & Values */}
-      <Box sx={{ mb: 6 }}>
-        <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-          Our Mission
-        </Typography>
-        <Paper elevation={3} sx={{ p: 4, mb: 5, textAlign: "center", bgcolor: "#f5f5f5" }}>
-          <Typography variant="body1" sx={{ fontSize: "1.2rem", fontStyle: "italic" }}>
-            "To provide premium packaging solutions that meet and exceed customer expectations, ensuring the highest quality, sustainability, and innovation standards."
+      {/* In the existing code, replace the Values section with this updated version */}
+<Box sx={{ mb: 6 }}>
+  <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
+    Our Mission
+  </Typography>
+  <Paper elevation={3} sx={{ p: 4, mb: 5, textAlign: "center", bgcolor: "#f5f5f5" }}>
+    <Typography variant="body1" sx={{ fontSize: "1.2rem", fontStyle: "italic" }}>
+      "To provide premium packaging solutions that meet and exceed customer expectations, ensuring the highest quality, sustainability, and innovation standards."
+    </Typography>
+  </Paper>
+  
+  <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
+    Our Values
+  </Typography>
+  <Grid container spacing={4} sx={{ mb: 4 }}>
+    {[
+      { 
+        icon: VerifiedIcon, 
+        title: "Quality", 
+        description: "We are committed to providing the highest quality products through rigorous testing and quality control processes. Our dedication to excellence ensures that every product meets or exceeds industry standards."
+      },
+      { 
+        icon: AutorenewIcon, 
+        title: "Innovation", 
+        description: "We constantly evolve our processes and products to stay at the forefront of packaging technology. Our R&D team works tirelessly to develop new solutions that address emerging market needs."
+      },
+      { 
+        icon: RecyclingIcon, 
+        title: "Customer Focus", 
+        description: "Understanding customer needs is at the core of our business. We prioritize listening to our clients, anticipating their requirements, and developing solutions that address their specific challenges."
+      },
+      { 
+        icon: EthicsIcon, 
+        title: "Ethics", 
+        description: "We conduct our business with the highest ethical standards, ensuring transparency, honesty, and integrity in all our interactions with clients, suppliers, employees, and the community."
+      }
+    ].map((value, index) => (
+      <Grid item xs={12} md={3} key={index}>
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            p: 3, 
+            height: "100%", 
+            display: "flex", 
+            flexDirection: "column",
+            borderTop: "4px solid #0d47a1" 
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+            <value.icon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
+            <Typography variant="h6">{value.title}</Typography>
+          </Box>
+          <Typography sx={{ flexGrow: 1 }}>
+            {value.description}
           </Typography>
         </Paper>
-        
-        <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-          Our Values
-        </Typography>
-        <Grid container spacing={4} sx={{ mb: 4 }}>
-          <Grid item xs={12} md={3}>
-            <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <VerifiedIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
-                <Typography variant="h6">Quality</Typography>
-              </Box>
-              <Typography>
-                We are committed to providing the highest quality products through rigorous testing and quality control processes. Our dedication to excellence ensures that every product meets or exceeds industry standards.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <AutorenewIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
-                <Typography variant="h6">Innovation</Typography>
-              </Box>
-              <Typography>
-                We constantly evolve our processes and products to stay at the forefront of packaging technology. Our R&D team works tirelessly to develop new solutions that address emerging market needs.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <RecyclingIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
-                <Typography variant="h6">Customer Focus</Typography>
-              </Box>
-              <Typography>
-                Understanding customer needs is at the core of our business. We prioritize listening to our clients, anticipating their requirements, and developing solutions that address their specific challenges.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <EthicsIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
-                <Typography variant="h6">Ethics</Typography>
-              </Box>
-              <Typography>
-                We conduct our business with the highest ethical standards, ensuring transparency, honesty, and integrity in all our interactions with clients, suppliers, employees, and the community.
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-        <Typography variant="body1" sx={{ textAlign: "center" }}>
-          Our values guide everything we do at B.K. Polymers, forming the foundation of our business practices and relationships.
-        </Typography>
-      </Box>
-      
+      </Grid>
+    ))}
+  </Grid>
+  {/* <Typography variant="body1" sx={{ textAlign: "center" }}>
+    Our values guide everything we do at B.K. Polymers, forming the foundation of our business practices and relationships.
+  </Typography> */}
+</Box>
       <Divider sx={{ mb: 6 }} />
       
       {/* Our Leadership - Updated Section with new content and 360 flip effect */}
