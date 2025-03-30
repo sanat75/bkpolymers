@@ -142,18 +142,21 @@ function Home() {
                 global standards. Trusted by industry leaders, we continue to push the 
                 boundaries of excellence in the packaging sector.
               </Typography>
-              <Button
-                component={Link}
-                to="/about"
-                variant="contained"
-                sx={{
-                  bgcolor: "#0d47a1",
-                  "&:hover": { bgcolor: "#083378" },
-                  fontSize: "1.1rem"  // Optional: slightly larger button text
-                }}
-              >
-                Learn More About Us
-              </Button>
+              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+  <Button
+    component={Link}
+    to="/about"
+    variant="contained"
+    sx={{
+      bgcolor: "#0d47a1",
+      "&:hover": { bgcolor: "#083378" },
+      fontSize: "1.1rem"
+    }}
+  >
+    Learn More About Us
+  </Button>
+</Grid>
+
             </Grid>
           </Grid>
         </Box>
