@@ -33,14 +33,11 @@ function App() {
         <meta property="og:title" content="BK Polymers | Polymer Packaging" />
         <meta property="og:description" content="BK Polymers delivers premium polymer packaging solutions, including LDPE, HDPE rolls, poly bags, heat shrink films, and flame-retardant materials."
  />
-        <meta property="og:image" content="https://www.bkpolymers.in/og-image.jpg" />
         
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="BK Polymers | Main Keyword" />
-        <meta name="twitter:description" content="A clear, compelling description of your website in 150-160 characters." />
-        <meta name="twitter:image" content="https://www.bkpolymers.in/twitter-image.jpg" />
-        
+        <meta name="twitter:description" content="A clear, compelling description of your website in 150-160 characters." />        
         {/* Canonical URL to prevent duplicate content issues */}
         <link rel="canonical" href="https://www.bkpolymers.in/" />
       </Helmet>
