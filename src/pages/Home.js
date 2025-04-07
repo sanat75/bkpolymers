@@ -31,10 +31,6 @@ function HomePage() {
   );
 }
 
-// Import client logos
-
-
-
 function Home() {
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
@@ -42,15 +38,15 @@ function Home() {
       <Box
         sx={{
           textAlign: "center",
-          py: 10,
+          py: { xs: 6, md: 10 },
           backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bg2})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           color: "white",
-          mb: 6,
+          mb: { xs: 4, md: 6 },
           position: "relative",
-          height: "500px",
+          height: { xs: "400px", md: "500px" },
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -62,10 +58,11 @@ function Home() {
           variant="h1"
           sx={{
             fontWeight: "bold",
-            mb: 2,
-            fontSize: { xs: "2.5rem", md: "4.5rem" },
+            mb: { xs: 1, md: 2 },
+            fontSize: { xs: "2.2rem", sm: "2.5rem", md: "4.5rem" },
             letterSpacing: "2px",
             textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
+            px: 2,
           }}
         >
           B.K. POLYMERS
@@ -73,14 +70,14 @@ function Home() {
         <Typography
           variant="h5"
           sx={{
-            mb: 4,
-            fontSize: { xs: "1.25rem", md: "1.75rem" },
+            mb: { xs: 3, md: 4 },
+            fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.75rem" },
             maxWidth: "800px",
             mx: "auto",
             lineHeight: 1.4,
             fontWeight: 300,
             textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
-            px: 3,
+            px: { xs: 2, sm: 3 },
           }}
         >
           Your Trusted Partner in Premium Packaging Solutions Since 1992
@@ -88,13 +85,13 @@ function Home() {
         <Button
           variant="contained"
           sx={{
-            mt: 2,
+            mt: { xs: 1, md: 2 },
             bgcolor: "#0d47a1",
             color: "white",
             fontWeight: "bold",
-            px: 4,
-            py: 1.5,
-            fontSize: "1.1rem",
+            px: { xs: 3, sm: 4 },
+            py: { xs: 1, sm: 1.5 },
+            fontSize: { xs: "1rem", sm: "1.1rem" },
             "&:hover": { bgcolor: "#1565c0", transform: "scale(1.05)" },
             transition: "all 0.3s ease",
             borderRadius: 2,
@@ -110,18 +107,18 @@ function Home() {
       
       {/* About Us Section */}
       <Container maxWidth="lg">
-        <Box sx={{ mb: 6 }}>
-          <Grid container spacing={4} justifyContent="center">
+        <Box sx={{ mb: { xs: 4, md: 6 }, px: { xs: 2, sm: 0 } }}>
+          <Grid container spacing={3} justifyContent="center">
             <Grid item xs={12}>
               <Typography
                 variant="h4"
                 component="h2"
                 align="center"
                 sx={{
-                  mb: 3,
+                  mb: 2,
                   fontWeight: "medium",
                   color: "#0d47a1",
-                  fontSize: "2.3rem",   // Slightly larger than default h4
+                  fontSize: { xs: "1.8rem", sm: "2.3rem" },
                 }}
               >
                 About Us
@@ -129,9 +126,9 @@ function Home() {
               <Typography
                 variant="body1"
                 sx={{ 
-                  mb: 2,
-                  fontSize: "1.25rem",  // Increase body text size
-                  lineHeight: 1.6       // Improves readability
+                  mb: 3,
+                  fontSize: { xs: "1.1rem", sm: "1.25rem" },
+                  lineHeight: 1.6,
                 }}
               >
                 Since 1992, B.K. Polymers has been a leading name in premium packaging solutions. 
@@ -142,21 +139,22 @@ function Home() {
                 global standards. Trusted by industry leaders, we continue to push the 
                 boundaries of excellence in the packaging sector.
               </Typography>
-              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-  <Button
-    component={Link}
-    to="/about"
-    variant="contained"
-    sx={{
-      bgcolor: "#0d47a1",
-      "&:hover": { bgcolor: "#083378" },
-      fontSize: "1.1rem"
-    }}
-  >
-    Learn More About Us
-  </Button>
-</Grid>
-
+              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                <Button
+                  component={Link}
+                  to="/about"
+                  variant="contained"
+                  sx={{
+                    bgcolor: "#0d47a1",
+                    "&:hover": { bgcolor: "#083378" },
+                    fontSize: { xs: "1rem", sm: "1.1rem" },
+                    px: { xs: 3, sm: 4 },
+                    py: { xs: 1, sm: 1.2 },
+                  }}
+                >
+                  Learn More About Us
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </Box>
@@ -165,27 +163,33 @@ function Home() {
         <ScrollingClientsSection />
         
         {/* Mission & Values Combined Section */}
-        <Box sx={{ mb: 6, bgcolor: "#f5f5f5", p: 4, borderRadius: 2 }}>
+        <Box sx={{ 
+          mb: { xs: 4, md: 6 }, 
+          bgcolor: "#f5f5f5", 
+          p: { xs: 3, sm: 4 }, 
+          borderRadius: 2,
+          mx: { xs: 2, sm: 0 },
+        }}>
           <Typography 
             variant="h4" 
             component="h2" 
             sx={{ 
-              mb: 3, 
+              mb: { xs: 2, md: 3 }, 
               textAlign: "center", 
               fontWeight: "medium", 
               color: "#0d47a1",
-              fontSize: "2.3rem"    // Larger heading
+              fontSize: { xs: "1.8rem", sm: "2.3rem" },
             }}
           >
             Our Mission & Values
           </Typography>
           
           {/* Mission Statement */}
-          <Box sx={{ textAlign: "center", mb: 4 }}>
+          <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
             <Typography 
               variant="body1" 
               sx={{ 
-                fontSize: "1.2rem",   // Larger body text
+                fontSize: { xs: "1.1rem", sm: "1.2rem" },
                 lineHeight: 1.6,
                 maxWidth: "800px", 
                 mx: "auto" 
@@ -197,53 +201,53 @@ function Home() {
           </Box>
           
           {/* Core Values */}
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
-              <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <VerifiedIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
+          <Grid container spacing={{ xs: 2, md: 4 }}>
+            <Grid item xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: { xs: 2, sm: 3 }, height: "100%", borderTop: "4px solid #0d47a1" }}>
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <VerifiedIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
                   <Typography 
                     variant="h6" 
-                    sx={{ fontSize: "1.3rem" }} // Slightly larger subheading
+                    sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
                   >
                     Quality
                   </Typography>
                 </Box>
-                <Typography sx={{ fontSize: "1.1rem", lineHeight: 1.5 }}>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
                   We are committed to providing the highest quality products through rigorous testing 
                   and quality control processes.
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <AutorenewIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
+            <Grid item xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: { xs: 2, sm: 3 }, height: "100%", borderTop: "4px solid #0d47a1" }}>
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <AutorenewIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
                   <Typography 
                     variant="h6" 
-                    sx={{ fontSize: "1.3rem" }}
+                    sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
                   >
                     Innovation
                   </Typography>
                 </Box>
-                <Typography sx={{ fontSize: "1.1rem", lineHeight: 1.5 }}>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
                   We constantly evolve our processes and products to stay at the forefront of packaging 
                   technology.
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper elevation={3} sx={{ p: 3, height: "100%", borderTop: "4px solid #0d47a1" }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <RecyclingIcon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
+            <Grid item xs={12} sm={6} md={4} sx={{ mx: { xs: 'auto', sm: 0 }, width: { xs: '100%', sm: 'auto' } }}>
+              <Paper elevation={3} sx={{ p: { xs: 2, sm: 3 }, height: "100%", borderTop: "4px solid #0d47a1" }}>
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <RecyclingIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
                   <Typography 
                     variant="h6" 
-                    sx={{ fontSize: "1.3rem" }}
+                    sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
                   >
                     Sustainability
                   </Typography>
                 </Box>
-                <Typography sx={{ fontSize: "1.1rem", lineHeight: 1.5 }}>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
                   We prioritize environmentally responsible practices throughout our operations.
                 </Typography>
               </Paper>
@@ -252,15 +256,22 @@ function Home() {
         </Box>
         
         {/* Contact Section */}
-        <Box sx={{ mb: 6, bgcolor: "#0d47a1", color: "white", p: 4, borderRadius: 2 }}>
-          <Grid container spacing={4} alignItems="center">
+        <Box sx={{ 
+          mb: { xs: 4, md: 6 }, 
+          bgcolor: "#0d47a1", 
+          color: "white", 
+          p: { xs: 3, sm: 4 }, 
+          borderRadius: 2,
+          mx: { xs: 2, sm: 0 },
+        }}>
+          <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={6}>
               <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <BusinessIcon sx={{ mr: 1, fontSize: 30 }} />
+                <BusinessIcon sx={{ mr: 1, fontSize: { xs: 24, sm: 30 } }} />
                 <Typography 
                   variant="h5" 
                   sx={{ 
-                    fontSize: "1.75rem"    // Larger subheading for contact
+                    fontSize: { xs: "1.5rem", sm: "1.75rem" }
                   }}
                 >
                   Get In Touch
@@ -270,7 +281,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 2, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -280,7 +291,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 1, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -290,7 +301,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 2, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -300,7 +311,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 1, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -310,7 +321,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 2, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -320,7 +331,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 1, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -330,7 +341,7 @@ function Home() {
                 variant="body1" 
                 sx={{ 
                   mb: 2, 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
@@ -340,14 +351,14 @@ function Home() {
               <Typography 
                 variant="body1" 
                 sx={{ 
-                  fontSize: "1.2rem", 
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }, 
                   lineHeight: 1.6 
                 }}
               >
                 Email: bkpolymers1617@yahoo.com
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6} sx={{ textAlign: "center" }}>
+            <Grid item xs={12} md={6} sx={{ textAlign: "center", mt: { xs: 2, md: 0 } }}>
               <Button 
                 component={Link} 
                 to="/contact" 
@@ -356,9 +367,9 @@ function Home() {
                   bgcolor: "white", 
                   color: "#0d47a1",
                   "&:hover": { bgcolor: "#e0e0e0" },
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1.2rem"   // Larger font on the button
+                  px: { xs: 3, sm: 4 },
+                  py: { xs: 1, sm: 1.5 },
+                  fontSize: { xs: "1.1rem", sm: "1.2rem" }
                 }}
               >
                 Contact Us
@@ -441,16 +452,16 @@ const ScrollingClientsSection = () => {
   }, [clients, cloneCount]);
   
   return (
-    <Box sx={{ mb: 6, overflow: 'hidden' }}>
+    <Box sx={{ mb: { xs: 4, md: 6 }, overflow: 'hidden', px: { xs: 2, sm: 0 } }}>
       <Typography
         variant="h4"
         component="h2"
         sx={{
-          mb: 3,
+          mb: { xs: 2, md: 3 },
           textAlign: "center",
           fontWeight: "medium",
           color: "#0d47a1",
-          fontSize: "2.3rem"
+          fontSize: { xs: "1.8rem", sm: "2.3rem" }
         }}
       >
         Our Trusted Clients
@@ -460,10 +471,10 @@ const ScrollingClientsSection = () => {
         variant="body1"
         sx={{
           textAlign: "center",
-          mb: 4,
+          mb: { xs: 3, md: 4 },
           maxWidth: "800px",
           mx: "auto",
-          fontSize: "1.2rem",
+          fontSize: { xs: "1.1rem", sm: "1.2rem" },
           lineHeight: 1.6
         }}
       >
@@ -487,12 +498,12 @@ const ScrollingClientsSection = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 mx: 2,
-                height: 120,
-                width: 150,
+                height: { xs: 100, sm: 120 },
+                width: { xs: 120, sm: 150 },
                 backgroundColor: 'white',
                 borderRadius: 1,
                 boxShadow: 1,
-                p: 2
+                p: { xs: 1.5, sm: 2 }
               }}
             >
               <Box 
@@ -501,7 +512,7 @@ const ScrollingClientsSection = () => {
                 alt={client.name}
                 sx={{ 
                   maxWidth: '100%', 
-                  maxHeight: '80px', 
+                  maxHeight: { xs: '70px', sm: '80px' }, 
                   objectFit: 'contain' 
                 }}
               />
