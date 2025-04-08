@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Typography, Container, Grid, Paper, Divider, IconButton, useMediaQuery, useTheme, Collapse } from "@mui/material";import VerifiedIcon from "@mui/icons-material/Verified";
+import { Box, Typography, Container, Grid, Paper, Divider, IconButton, useMediaQuery, useTheme, Collapse } from "@mui/material";
+import VerifiedIcon from "@mui/icons-material/Verified";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import RecyclingIcon from "@mui/icons-material/Recycling";
 import EthicsIcon from "@mui/icons-material/Handshake";
@@ -51,7 +52,7 @@ const LeadershipCard = ({ name, title, description, photo }) => {
           boxShadow: 6,
           transform: isFlipped ? "rotateY(180deg) translateY(-5px)" : "rotateY(0deg) translateY(-5px)"
         },
-        mb: { xs: 2, sm: 0 }
+        mb: { xs: 4, sm: 0 } // Increased bottom margin on mobile from 2 to 4
       }}
       onClick={handleFlip}
     >
@@ -173,50 +174,18 @@ const AboutUsHeader = () => {
   );
 };
 
-// Collapsible section component for mobile view
-const CollapsibleSection = ({ title, children }) => {
-  const [expanded, setExpanded] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
-  const handleToggle = () => {
-    setExpanded(!expanded);
-  };
-  
-  // On desktop, always show content
-  if (!isMobile) {
-    return (
-      <>
-        <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-          {title}
-        </Typography>
-        {children}
-      </>
-    );
-  }
-  
-  // On mobile, make collapsible
+// Section Header component for consistent styling
+const SectionHeader = ({ title }) => {
   return (
-    <Box sx={{ mb: 3 }}>
-      <Box sx={{ 
-        display: "flex", 
-        justifyContent: "space-between", 
-        alignItems: "center",
-        mb: 2,
-        pb: 1,
-        borderBottom: "1px solid #e0e0e0"
-      }}>
-        <Typography variant="h5" component="h2" sx={{ fontWeight: "medium", color: "#0d47a1" }}>
-          {title}
-        </Typography>
-        <IconButton onClick={handleToggle} size="small">
-          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-        </IconButton>
-      </Box>
-      <Collapse in={expanded}>
-        {children}
-      </Collapse>
-    </Box>
+    <Typography variant="h4" component="h2" sx={{ 
+      mb: 3, 
+      fontWeight: "medium", 
+      color: "#0d47a1", 
+      textAlign: "center",
+      fontSize: { xs: "1.7rem", sm: "2rem" } // Responsive font size
+    }}>
+      {title}
+    </Typography>
   );
 };
 
@@ -239,7 +208,6 @@ function AboutUs() {
       photo: chandeep2
     },
     {
-      
       name: "Harshdeep Singh",
       title: "Director",
       description: "Harshdeep Singh leads B.K. Polymers' strategic business initiatives, driving sustainable growth and market expansion. With a strong focus on innovation and adaptability, he ensures that the company remains ahead of industry trends.",
@@ -254,10 +222,11 @@ function AboutUs() {
       <AboutUsHeader />
       
       {/* Company Introduction */}
-      <Box sx={{ mb: { xs: 4, sm: 6 } }}>
-        {isMobile ? (
-          <CollapsibleSection title="Who We Are">
-            <Grid container spacing={3} alignItems="center">
+      <Box sx={{ mb: { xs: 5, sm: 6 } }}> {/* Increased mobile margin from 4 to 5 */}
+        <SectionHeader title="Who We Are" />
+        <Grid container spacing={3} alignItems="center">
+          {isMobile ? (
+            <>
               <Grid item xs={12}>
                 <Box 
                   component="img" 
@@ -282,14 +251,9 @@ function AboutUs() {
                   With decades of experience, we understand and meet our clients' diverse needs with precision, quality, and dedication.
                 </Typography>
               </Grid>
-            </Grid>
-          </CollapsibleSection>
-        ) : (
-          <>
-            <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-              Who We Are
-            </Typography>
-            <Grid container spacing={4} alignItems="center">
+            </>
+          ) : (
+            <>
               <Grid item xs={12} md={6}>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                   At B.K. Polymers, we've been a trusted leader in the packaging industry since 1992. Our journey began with a vision to provide premium packaging solutions that meet the highest standards of quality and reliability.
@@ -313,228 +277,153 @@ function AboutUs() {
                   }}
                 />
               </Grid>
-            </Grid>
-          </>
-        )}
+            </>
+          )}
+        </Grid>
       </Box>
       
-      <Divider sx={{ mb: { xs: 4, sm: 6 } }} />
+      <Divider sx={{ mb: { xs: 5, sm: 6 } }} /> {/* Increased mobile margin from 4 to 5 */}
       
       {/* Our History */}
-      <Box sx={{ mb: { xs: 4, sm: 6 } }}>
-        {isMobile ? (
-          <CollapsibleSection title="Our History">
-            <Paper elevation={3} sx={{ p: 3, bgcolor: "#f5f5f5" }}>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Box sx={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  mb: 2,
-                  p: 1,
-                  borderLeft: "4px solid #0d47a1"
-                }}>
-                  <Typography variant="subtitle1" sx={{ ml: 1, fontWeight: "medium" }}>
-                    From Humble Beginnings to Industry Leader
-                  </Typography>
-                </Box>
-                <Typography variant="body2" sx={{ mb: 2 }}>
-                  Established in 1992, B.K. Polymers began as a small enterprise with a clear vision: to deliver exceptional packaging solutions with uncompromising quality.
-                </Typography>
-                <Typography variant="body2">
-                  Our growth has been marked by continuous technological advancement and an expanding product portfolio. Today, we serve a diverse clientele across multiple industries.
-                </Typography>
-              </Box>
-            </Paper>
-          </CollapsibleSection>
-        ) : (
-          <>
-            <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-              Our History
+      <Box sx={{ mb: { xs: 5, sm: 6 } }}> {/* Increased mobile margin from 4 to 5 */}
+        <SectionHeader title="Our History" />
+        <Paper elevation={3} sx={{ p: isMobile ? 3 : 4, bgcolor: "#f5f5f5" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box sx={{ 
+              display: "flex", 
+              alignItems: "center", 
+              mb: 2,
+              p: 1,
+              borderLeft: "4px solid #0d47a1"
+            }}>
+              <Typography variant={isMobile ? "subtitle1" : "h6"} sx={{ ml: 1, fontWeight: isMobile ? "medium" : "normal" }}>
+                From Humble Beginnings to Industry Leader
+              </Typography>
+            </Box>
+            <Typography variant={isMobile ? "body2" : "body1"} sx={{ mb: 2 }}>
+              Established in 1992, B.K. Polymers began as a small enterprise with a clear vision: to deliver exceptional packaging solutions with uncompromising quality.
+              {!isMobile && " Over three decades, we've grown into a recognized industry leader through dedication and innovation."}
             </Typography>
-            <Paper elevation={3} sx={{ p: 4, bgcolor: "#f5f5f5" }}>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Box sx={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  mb: 2,
-                  p: 1,
-                  borderLeft: "4px solid #0d47a1"
-                }}>
-                  <Typography variant="h6" sx={{ ml: 1 }}>From Humble Beginnings to Industry Leader</Typography>
-                </Box>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Established in 1992, B.K. Polymers began as a small enterprise with a clear vision: to deliver exceptional packaging solutions with uncompromising quality. Over three decades, we've grown into a recognized industry leader through dedication and innovation.
-                </Typography>
-                <Typography variant="body1">
-                  Our growth has been marked by continuous technological advancement and an expanding product portfolio. We've invested in state-of-the-art machinery and processes while maintaining our founding principles of quality, reliability, and customer satisfaction. Today, we serve a diverse clientele across multiple industries, providing customized packaging solutions that meet specific requirements and exceed expectations.
-                </Typography>
-              </Box>
-            </Paper>
-          </>
-        )}
+            <Typography variant={isMobile ? "body2" : "body1"}>
+              Our growth has been marked by continuous technological advancement and an expanding product portfolio. 
+              {!isMobile ? " We've invested in state-of-the-art machinery and processes while maintaining our founding principles of quality, reliability, and customer satisfaction. Today, we serve a diverse clientele across multiple industries, providing customized packaging solutions that meet specific requirements and exceed expectations." : " Today, we serve a diverse clientele across multiple industries."}
+            </Typography>
+          </Box>
+        </Paper>
       </Box>
       
-      <Divider sx={{ mb: { xs: 4, sm: 6 } }} />
+      <Divider sx={{ mb: { xs: 5, sm: 6 } }} /> {/* Increased mobile margin from 4 to 5 */}
       
       {/* Manufacturing Capabilities */}
-      <Box sx={{ mb: { xs: 4, sm: 6 } }}>
-        {isMobile ? (
-          <CollapsibleSection title="What We Do">
-            <Paper elevation={3} sx={{ p: 3, mb: 3, bgcolor: "#f5f5f5" }}>
-              <Typography variant="body2" sx={{ mb: 2 }}>
-                At B.K Polymers, we prioritize high-quality manufacturing, timely delivery, and complete customer satisfaction. Our production processes adhere to international quality standards.
-              </Typography>
-              <Typography variant="body2">
-                We manufacture a wide range of products, including Plain and Printed Polythene Bags, Rolls, Sheets, Industrial Liners, Self-Locking Zipper Bags, Stretch Film, Heat Shrink Film, and Black & Colored Bags.
-              </Typography>
-            </Paper>
-          </CollapsibleSection>
-        ) : (
-          <>
-            <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-              What We Do
-            </Typography>
-            <Paper elevation={3} sx={{ p: 4, mb: 4, bgcolor: "#f5f5f5" }}>
-              <Typography variant="body1" sx={{ mb: 3 }}>
-                At B.K Polymers, we prioritize high-quality manufacturing, timely delivery, and complete customer satisfaction. Our production processes adhere to international quality standards. We manufacture a wide range of products, including Plain and Printed Polythene Bags, Rolls, Sheets, Industrial Liners, Self-Locking Zipper Bags, Stretch Film, Heat Shrink Film, and Black & Colored Bags, using LDPE, LLDPE, and HM/HDPE materials.
-              </Typography>
-              <Typography variant="body1">
-                Bag sizes range from 2" to 80" (50 microns and above), while sheets vary from 2" to 160", with thickness options between 7 and 100 microns.
-              </Typography>
-            </Paper>
-          </>
-        )}
+      <Box sx={{ mb: { xs: 5, sm: 6 } }}> {/* Increased mobile margin from 4 to 5 */}
+        <SectionHeader title="What We Do" />
+        <Paper elevation={3} sx={{ p: isMobile ? 3 : 4, mb: isMobile ? 3 : 4, bgcolor: "#f5f5f5" }}>
+          <Typography variant={isMobile ? "body2" : "body1"} sx={{ mb: isMobile ? 2 : 3 }}>
+            At B.K Polymers, we prioritize high-quality manufacturing, timely delivery, and complete customer satisfaction. Our production processes adhere to international quality standards.
+            {!isMobile && " We manufacture a wide range of products, including Plain and Printed Polythene Bags, Rolls, Sheets, Industrial Liners, Self-Locking Zipper Bags, Stretch Film, Heat Shrink Film, and Black & Colored Bags, using LDPE, LLDPE, and HM/HDPE materials."}
+          </Typography>
+          <Typography variant={isMobile ? "body2" : "body1"}>
+            {isMobile ? "We manufacture a wide range of products, including Plain and Printed Polythene Bags, Rolls, Sheets, Industrial Liners, Self-Locking Zipper Bags, Stretch Film, Heat Shrink Film, and Black & Colored Bags." : "Bag sizes range from 2\" to 80\" (50 microns and above), while sheets vary from 2\" to 160\", with thickness options between 7 and 100 microns."}
+          </Typography>
+        </Paper>
       </Box>
       
-      <Divider sx={{ mb: { xs: 4, sm: 6 } }} />
+      <Divider sx={{ mb: { xs: 5, sm: 6 } }} /> {/* Increased mobile margin from 4 to 5 */}
       
       {/* Mission & Values Section */}
-      <Box sx={{ mb: { xs: 4, sm: 6 } }}>
-        {isMobile ? (
-          <CollapsibleSection title="Our Mission & Values">
-            <Paper elevation={3} sx={{ p: 3, mb: 3, textAlign: "center", bgcolor: "#f5f5f5" }}>
-              <Typography variant="body1" sx={{ fontSize: "1.1rem", fontStyle: "italic" }}>
-                "To provide premium packaging solutions that meet and exceed customer expectations, ensuring the highest quality, sustainability, and innovation standards."
-              </Typography>
-            </Paper>
-            
-            <Grid container spacing={2} sx={{ mb: 2 }}>
-              {[
-                { 
-                  icon: VerifiedIcon, 
-                  title: "Quality", 
-                  description: "We are committed to providing the highest quality products through rigorous testing and quality control processes."
-                },
-                { 
-                  icon: AutorenewIcon, 
-                  title: "Innovation", 
-                  description: "We constantly evolve our processes and products to stay at the forefront of packaging technology."
-                },
-                { 
-                  icon: RecyclingIcon, 
-                  title: "Customer Focus", 
-                  description: "Understanding customer needs is at the core of our business."
-                },
-                { 
-                  icon: EthicsIcon, 
-                  title: "Ethics", 
-                  description: "We conduct our business with the highest ethical standards, ensuring transparency and integrity."
-                }
-              ].map((value, index) => (
-                <Grid item xs={12} key={index}>
-                  <Paper 
-                    elevation={2} 
-                    sx={{ 
-                      p: 2, 
-                      display: "flex", 
-                      alignItems: "center",
-                      borderLeft: "4px solid #0d47a1" 
-                    }}
-                  >
-                    <value.icon sx={{ mr: 2, color: "#0d47a1", fontSize: 24 }} />
-                    <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: "medium" }}>{value.title}</Typography>
-                      <Typography variant="body2">{value.description}</Typography>
-                    </Box>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </CollapsibleSection>
-        ) : (
-          <>
-            <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-              Our Mission
-            </Typography>
-            <Paper elevation={3} sx={{ p: 4, mb: 5, textAlign: "center", bgcolor: "#f5f5f5" }}>
-              <Typography variant="body1" sx={{ fontSize: "1.2rem", fontStyle: "italic" }}>
-                "To provide premium packaging solutions that meet and exceed customer expectations, ensuring the highest quality, sustainability, and innovation standards."
-              </Typography>
-            </Paper>
-            
-            <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-              Our Values
-            </Typography>
-            <Grid container spacing={4} sx={{ mb: 4 }}>
-              {[
-                { 
-                  icon: VerifiedIcon, 
-                  title: "Quality", 
-                  description: "We are committed to providing the highest quality products through rigorous testing and quality control processes. Our dedication to excellence ensures that every product meets or exceeds industry standards."
-                },
-                { 
-                  icon: AutorenewIcon, 
-                  title: "Innovation", 
-                  description: "We constantly evolve our processes and products to stay at the forefront of packaging technology. Our R&D team works tirelessly to develop new solutions that address emerging market needs."
-                },
-                { 
-                  icon: RecyclingIcon, 
-                  title: "Customer Focus", 
-                  description: "Understanding customer needs is at the core of our business. We prioritize listening to our clients, anticipating their requirements, and developing solutions that address their specific challenges."
-                },
-                { 
-                  icon: EthicsIcon, 
-                  title: "Ethics", 
-                  description: "We conduct our business with the highest ethical standards, ensuring transparency, honesty, and integrity in all our interactions with clients, suppliers, employees, and the community."
-                }
-              ].map((value, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <Paper 
-                    elevation={3} 
-                    sx={{ 
-                      p: 3, 
-                      height: "100%", 
-                      display: "flex", 
-                      flexDirection: "column",
-                      borderTop: "4px solid #0d47a1" 
-                    }}
-                  >
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                      <value.icon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
-                      <Typography variant="h6">{value.title}</Typography>
-                    </Box>
-                    <Typography sx={{ flexGrow: 1 }}>
-                      {value.description}
-                    </Typography>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </>
+      <Box sx={{ mb: { xs: 5, sm: 6 } }}> {/* Increased mobile margin from 4 to 5 */}
+        <SectionHeader title="Our Mission & Values" />
+        <Paper elevation={3} sx={{ p: isMobile ? 3 : 4, mb: isMobile ? 3 : 5, textAlign: "center", bgcolor: "#f5f5f5" }}>
+          <Typography variant="body1" sx={{ fontSize: isMobile ? "1.1rem" : "1.2rem", fontStyle: "italic" }}>
+            "To provide premium packaging solutions that meet and exceed customer expectations, ensuring the highest quality, sustainability, and innovation standards."
+          </Typography>
+        </Paper>
+        
+        {!isMobile && (
+          <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
+            Our Values
+          </Typography>
         )}
+        
+        <Grid container spacing={isMobile ? 3 : 4} sx={{ mb: isMobile ? 2 : 4 }}> {/* Increased spacing from 2 to 3 for mobile */}
+          {[
+            { 
+              icon: VerifiedIcon, 
+              title: "Quality", 
+              description: isMobile ? "We are committed to providing the highest quality products through rigorous testing and quality control processes." : "We are committed to providing the highest quality products through rigorous testing and quality control processes. Our dedication to excellence ensures that every product meets or exceeds industry standards."
+            },
+            { 
+              icon: AutorenewIcon, 
+              title: "Innovation", 
+              description: isMobile ? "We constantly evolve our processes and products to stay at the forefront of packaging technology." : "We constantly evolve our processes and products to stay at the forefront of packaging technology. Our R&D team works tirelessly to develop new solutions that address emerging market needs."
+            },
+            { 
+              icon: RecyclingIcon, 
+              title: "Customer Focus", 
+              description: isMobile ? "Understanding customer needs is at the core of our business." : "Understanding customer needs is at the core of our business. We prioritize listening to our clients, anticipating their requirements, and developing solutions that address their specific challenges."
+            },
+            { 
+              icon: EthicsIcon, 
+              title: "Ethics", 
+              description: isMobile ? "We conduct our business with the highest ethical standards, ensuring transparency and integrity." : "We conduct our business with the highest ethical standards, ensuring transparency, honesty, and integrity in all our interactions with clients, suppliers, employees, and the community."
+            }
+          ].map((value, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              {isMobile ? (
+                <Paper 
+                  elevation={2} 
+                  sx={{ 
+                    p: 2, 
+                    display: "flex", 
+                    alignItems: "center",
+                    borderLeft: "4px solid #0d47a1" 
+                  }}
+                >
+                  <value.icon sx={{ mr: 2, color: "#0d47a1", fontSize: 24 }} />
+                  <Box>
+                    <Typography variant="subtitle1" sx={{ fontWeight: "medium" }}>{value.title}</Typography>
+                    <Typography variant="body2">{value.description}</Typography>
+                  </Box>
+                </Paper>
+              ) : (
+                <Paper 
+                  elevation={3} 
+                  sx={{ 
+                    p: 3, 
+                    height: "100%", 
+                    display: "flex", 
+                    flexDirection: "column",
+                    borderTop: "4px solid #0d47a1" 
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                    <value.icon sx={{ mr: 1, color: "#0d47a1", fontSize: 30 }} />
+                    <Typography variant="h6">{value.title}</Typography>
+                  </Box>
+                  <Typography sx={{ flexGrow: 1 }}>
+                    {value.description}
+                  </Typography>
+                </Paper>
+              )}
+            </Grid>
+          ))}
+        </Grid>
       </Box>
       
-      <Divider sx={{ mb: { xs: 4, sm: 6 } }} />
+      <Divider sx={{ mb: { xs: 5, sm: 6 } }} /> {/* Increased mobile margin from 4 to 5 */}
       
       {/* Our Leadership - Updated Section with new content and 360 flip effect */}
-      <Box sx={{ mb: { xs: 4, sm: 6 } }}>
+      <Box sx={{ mb: { xs: 5, sm: 6 } }}> {/* Increased mobile margin from 4 to 5 */}
+        <SectionHeader title="Our Leadership" />
+        <Typography variant={isMobile ? "body2" : "body1"} sx={{ mb: isMobile ? 4 : 4, textAlign: "center" }}>
+          At B.K. Polymers, our leadership team brings decades of expertise, innovation, and strategic vision.
+          {!isMobile && " Their dedication drives our commitment to quality, sustainability, and customer satisfaction, ensuring we remain a trusted name in the industry."}
+        </Typography>
+        
         {isMobile ? (
-          <CollapsibleSection title="Our Leadership">
-            <Typography variant="body2" sx={{ mb: 3, textAlign: "center" }}>
-              At B.K. Polymers, our leadership team brings decades of expertise, innovation, and strategic vision to drive our success.
-            </Typography>
+          <Box sx={{ mb: 3 }}>
             {leadershipTeam.map((leader, index) => (
-              <Box key={index} sx={{ mb: 3 }}>
+              <Box key={index} sx={{ mb: 5 }}> {/* Increased margin bottom from 3 to 5 for more spacing */}
                 <LeadershipCard 
                   name={leader.name}
                   title={leader.title}
@@ -543,32 +432,24 @@ function AboutUs() {
                 />
               </Box>
             ))}
-          </CollapsibleSection>
+          </Box>
         ) : (
-          <>
-            <Typography variant="h4" component="h2" sx={{ mb: 3, fontWeight: "medium", color: "#0d47a1", textAlign: "center" }}>
-              Our Leadership
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 4, textAlign: "center" }}>
-              At B.K. Polymers, our leadership team brings decades of expertise, innovation, and strategic vision. Their dedication drives our commitment to quality, sustainability, and customer satisfaction, ensuring we remain a trusted name in the industry.
-            </Typography>
-            <Grid container spacing={4}>
-              {leadershipTeam.map((leader, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
-                  <LeadershipCard 
-                    name={leader.name}
-                    title={leader.title}
-                    description={leader.description}
-                    photo={leader.photo}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </>
+          <Grid container spacing={4}>
+            {leadershipTeam.map((leader, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <LeadershipCard 
+                  name={leader.name}
+                  title={leader.title}
+                  description={leader.description}
+                  photo={leader.photo}
+                />
+              </Grid>
+            ))}
+          </Grid>
         )}
       </Box>
    
-      <Divider sx={{ mb: { xs: 4, sm: 6 } }} />
+      <Divider sx={{ mb: { xs: 5, sm: 6 } }} /> {/* Increased mobile margin from 4 to 5 */}
     </Container>
   );
 }

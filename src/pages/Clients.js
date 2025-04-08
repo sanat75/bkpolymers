@@ -66,25 +66,40 @@ function Clients() {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ px: isMobile ? 3 : 4 }}>
+    <Container maxWidth="lg" sx={{ 
+      px: isMobile ? 3 : 4,
+      // Add more vertical spacing throughout the page on mobile
+      "& > .MuiBox-root": {
+        mb: isMobile ? 10 : 8
+      }
+    }}>
       {/* Clients Header */}
-      <Box sx={{ textAlign: "center", py: isMobile ? 6 : 8, mt: isMobile ? 3 : 0 }}>
+      <Box sx={{ 
+        textAlign: "center", 
+        py: isMobile ? 8 : 8, 
+        mt: isMobile ? 5 : 0 
+      }}>
         <Typography 
           variant={isMobile ? "h4" : "h3"} 
           component="h1" 
-          sx={{ fontWeight: "bold", mb: 3 }}
+          sx={{ fontWeight: "bold", mb: 4 }} 
         >
           Our Clients
         </Typography>
         <Typography 
           variant={isMobile ? "body1" : "h6"} 
-          sx={{ color: "#555", maxWidth: "800px", mx: "auto", px: 2 }}
+          sx={{ 
+            color: "#555", 
+            maxWidth: "800px", 
+            mx: "auto", 
+            px: isMobile ? 3 : 2 
+          }}
         >
           We're proud to serve a diverse range of industries with our premium packaging solutions.
         </Typography>
         <Divider sx={{ 
-          mt: 5, 
-          mb: 6, 
+          mt: isMobile ? 6 : 5,
+          mb: isMobile ? 7 : 6,
           width: "80px", 
           mx: "auto", 
           borderColor: "#0d47a1", 
@@ -92,17 +107,21 @@ function Clients() {
         }} />
       </Box>
       
-      {/* Industries We Serve - Reordered as requested */}
-      <Box sx={{ mb: isMobile ? 8 : 10 }}>
+      {/* Industries We Serve - With improved spacing */}
+      <Box sx={{ mb: isMobile ? 12 : 10 }}>
         <Typography 
           variant={isMobile ? "h5" : "h4"} 
           component="h2" 
-          sx={{ textAlign: "center", mb: isMobile ? 4 : 5, fontWeight: "medium" }}
+          sx={{ 
+            textAlign: "center", 
+            mb: isMobile ? 6 : 5, 
+            fontWeight: "medium" 
+          }}
         >
           Industries We Serve
         </Typography>
         
-        <Grid container spacing={isMobile ? 4 : 3} sx={{ mb: 4 }}>
+        <Grid container spacing={isMobile ? 5 : 3} sx={{ mb: isMobile ? 6 : 4 }}>
           {[
             {
               title: "Electronics",
@@ -133,7 +152,7 @@ function Clients() {
               <Paper 
                 elevation={2} 
                 sx={{ 
-                  p: isMobile ? 4 : 3, 
+                  p: isMobile ? 5 : 3, 
                   height: "100%", 
                   borderLeft: "4px solid #0d47a1",
                   borderRadius: "4px",
@@ -150,7 +169,7 @@ function Clients() {
                   sx={{ 
                     color: "#0d47a1", 
                     fontSize: isMobile ? "1.25rem" : "1.15rem",
-                    mb: 2
+                    mb: isMobile ? 3 : 2
                   }}
                 >
                   {industry.title}
@@ -170,20 +189,24 @@ function Clients() {
         </Grid>
       </Box>
       
-      {/* Client Logos - Replaced with Scrolling Section */}
+      {/* Client Logos - Improved Scrolling Section */}
       <ScrollingClientsSection clients={clients} isMobile={isMobile} />
       
-      {/* Testimonials - Updated with bold formatting */}
-      <Box sx={{ mb: isMobile ? 10 : 8 }}>
+      {/* Testimonials - Updated with improved spacing */}
+      <Box sx={{ mb: isMobile ? 12 : 8 }}>
         <Typography 
           variant={isMobile ? "h5" : "h4"} 
           component="h2" 
-          sx={{ textAlign: "center", mb: isMobile ? 5 : 4, fontWeight: "medium" }}
+          sx={{ 
+            textAlign: "center", 
+            mb: isMobile ? 6 : 4, 
+            fontWeight: "medium" 
+          }}
         >
           Client Testimonials
         </Typography>
         
-        <Grid container spacing={isMobile ? 5 : 4}>
+        <Grid container spacing={isMobile ? 6 : 4}>
           {testimonials.map((testimonial) => (
             <Grid item xs={12} md={4} key={testimonial.id}>
               <Card 
@@ -200,7 +223,13 @@ function Clients() {
                   }
                 }}
               >
-                <CardContent sx={{ flexGrow: 1, position: "relative", pt: 5, px: isMobile ? 4 : 3, pb: 4 }}>
+                <CardContent sx={{ 
+                  flexGrow: 1, 
+                  position: "relative", 
+                  pt: isMobile ? 6 : 5, 
+                  px: isMobile ? 5 : 3, 
+                  pb: isMobile ? 5 : 4 
+                }}>
                   <FormatQuoteIcon 
                     sx={{ 
                       position: "absolute", 
@@ -215,7 +244,7 @@ function Clients() {
                     variant="body1" 
                     sx={{ 
                       pl: 2, 
-                      mb: 4, 
+                      mb: isMobile ? 5 : 4, 
                       fontStyle: "italic", 
                       fontWeight: "bold",
                       fontSize: isMobile ? "1.05rem" : "0.95rem",
@@ -229,7 +258,8 @@ function Clients() {
                       variant="subtitle1" 
                       sx={{ 
                         fontWeight: "medium",
-                        fontSize: isMobile ? "1.1rem" : "1rem" 
+                        fontSize: isMobile ? "1.1rem" : "1rem",
+                        mb: isMobile ? 1 : 0.5
                       }}
                     >
                       {testimonial.author}
@@ -249,12 +279,12 @@ function Clients() {
         </Grid>
       </Box>
       
-      {/* Call to Action */}
+      {/* Call to Action - With improved spacing */}
       <Box 
         sx={{ 
           textAlign: "center", 
-          p: isMobile ? 6 : 5, 
-          mb: 8, 
+          p: isMobile ? 7 : 5, 
+          mb: isMobile ? 10 : 8, 
           bgcolor: "#0d47a1", 
           color: "white",
           borderRadius: "8px"
@@ -263,19 +293,19 @@ function Clients() {
         <Typography 
           variant={isMobile ? "h5" : "h4"} 
           component="h2" 
-          sx={{ mb: 3 }}
+          sx={{ mb: isMobile ? 4 : 3 }}
         >
           Join Our Impressive Client List
         </Typography>
         <Typography 
           variant="body1" 
           sx={{ 
-            mb: 4, 
+            mb: isMobile ? 5 : 4, 
             maxWidth: "800px", 
             mx: "auto",
             fontSize: isMobile ? "1.05rem" : "1rem",
             lineHeight: 1.6,
-            px: 2
+            px: isMobile ? 3 : 2
           }}
         >
           Experience the quality, reliability, and excellent service that has made B.K. Polymers the 
@@ -287,7 +317,7 @@ function Clients() {
           sx={{ 
             display: "inline-block", 
             px: isMobile ? 5 : 4, 
-            py: isMobile ? 2 : 1.5, 
+            py: isMobile ? 2.5 : 1.5, 
             bgcolor: "white", 
             color: "#0d47a1", 
             borderRadius: "6px",
@@ -306,7 +336,7 @@ function Clients() {
   );
 }
 
-// Scrolling Clients Section Component
+// Improved Scrolling Clients Section Component
 const ScrollingClientsSection = ({ clients, isMobile }) => {
   const scrollRef = useRef(null);
   const [cloneCount, setCloneCount] = useState(3); // Number of times to clone the list
@@ -334,7 +364,7 @@ const ScrollingClientsSection = ({ clients, isMobile }) => {
         totalWidth = calculateTotalWidth();
       }
       
-      position -= 0.7; // Speed of scrolling (smaller = slower)
+      position -= 0.5; // Slowed down scrolling speed for better visibility
       
       // When we've scrolled the width of the first set of items, reset position to start
       if (Math.abs(position) >= totalWidth) {
@@ -364,13 +394,17 @@ const ScrollingClientsSection = ({ clients, isMobile }) => {
   }, [clients, cloneCount]);
   
   return (
-    <Box sx={{ mb: isMobile ? 10 : 8, mt: isMobile ? 2 : 0 }}>
+    <Box sx={{ 
+      mb: isMobile ? 12 : 8, 
+      mt: isMobile ? 6 : 2, 
+      py: isMobile ? 4 : 2  
+    }}>
       <Typography 
         variant={isMobile ? "h5" : "h4"} 
         component="h2" 
         sx={{ 
           textAlign: "center", 
-          mb: isMobile ? 5 : 4, 
+          mb: isMobile ? 6 : 4, 
           fontWeight: "medium" 
         }}
       >
@@ -381,8 +415,8 @@ const ScrollingClientsSection = ({ clients, isMobile }) => {
         position: 'relative', 
         width: '100%', 
         overflow: 'hidden',
-        my: isMobile ? 3 : 0,
-        py: isMobile ? 3 : 2
+        my: isMobile ? 5 : 2, 
+        py: isMobile ? 4 : 2  
       }}>
         <Box
           ref={scrollRef}
@@ -399,16 +433,16 @@ const ScrollingClientsSection = ({ clients, isMobile }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                mx: isMobile ? 3 : 2,
-                height: isMobile ? 140 : 120,
-                width: isMobile ? 180 : 160,
+                mx: isMobile ? 4 : 2, 
+                height: isMobile ? 120 : 120,
+                width: isMobile ? 160 : 160,
                 backgroundColor: 'white',
                 borderRadius: '8px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                p: 3,
+                p: isMobile ? 4 : 3,
                 transition: "transform 0.3s, box-shadow 0.3s",
                 "&:hover": {
-                  transform: "scale(1.08)",
+                  transform: "scale(1.05)", // Reduced scale effect
                   boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
                 }
               }}
@@ -419,7 +453,7 @@ const ScrollingClientsSection = ({ clients, isMobile }) => {
                 alt={client.name}
                 sx={{ 
                   maxWidth: '100%', 
-                  maxHeight: isMobile ? '90px' : '80px', 
+                  maxHeight: isMobile ? '70px' : '80px', 
                   objectFit: 'contain' 
                 }}
               />
