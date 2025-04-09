@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
-import { Box, Typography, Container, Grid, Paper, Divider, Card, CardContent, useMediaQuery } from "@mui/material";
+import { Box, Typography, Container, Grid, Paper, Divider, Card, CardContent, useMediaQuery, Button, Collapse } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import asianpaints from '../assets/asianpaints.png';
 import berger from '../assets/berger.jpg';
 import godrej from '../assets/godrej.png';
@@ -27,9 +29,87 @@ function HomePage() {
   );
 }
 
+// Industry Card Component with expand/collapse functionality
+const IndustryCard = ({ industry }) => {
+  const [expanded, setExpanded] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
+  return (
+    <Paper 
+      elevation={2} 
+      sx={{ 
+        height: "100%",
+        borderRadius: "8px",
+        background: "linear-gradient(145deg, #ffffff, #f5f9ff)",
+        borderLeft: "4px solid #0d47a1",
+        boxShadow: "0 4px 12px rgba(13, 71, 161, 0.1)",
+        transition: "all 0.3s ease",
+        "&:hover": {
+          transform: "translateY(-3px)",
+          boxShadow: "0 8px 20px rgba(13, 71, 161, 0.15)"
+        },
+        overflow: "hidden"
+      }}
+    >
+      <Box sx={{ p: 2.5 }}>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: "#0d47a1", 
+            fontSize: isMobile ? "1.25rem" : "1.15rem",
+            fontWeight: 600,
+            mb: 1
+          }}
+        >
+          {industry.title}
+        </Typography>
+        
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Typography 
+            variant="body2" 
+            sx={{ 
+              fontSize: isMobile ? "1rem" : "0.875rem",
+              lineHeight: 1.6,
+              color: "#4a4a4a",
+              mb: 2
+            }}
+          >
+            {industry.description}
+          </Typography>
+        </Collapse>
+        
+        <Button 
+          onClick={() => setExpanded(!expanded)}
+          size="small"
+          endIcon={expanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          sx={{ 
+            color: "#1565c0",
+            fontSize: "0.875rem",
+            p: 0,
+            "&:hover": {
+              background: "transparent",
+              color: "#0d47a1"
+            }
+          }}
+        >
+          {expanded ? "Show Less" : "Read More"}
+        </Button>
+      </Box>
+    </Paper>
+  );
+};
+
 function Clients() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
+  // Define consistent spacing values
+  const spacing = {
+    section: isMobile ? 6 : 7,       // Space between major sections
+    headingToContent: isMobile ? 3 : 3.5, // Space between heading and its content
+    contentToContent: isMobile ? 4 : 5, // Space between content blocks within a section
+  };
   
   // Actual clients with imported logos
   const clients = [
@@ -41,6 +121,34 @@ function Clients() {
     { id: 6, name: "Voltas", logo: voltas },
     { id: 7, name: "Honda", logo: honda },
     { id: 8, name: "Subros", logo: subros }
+  ];
+
+  // Industries data
+  const industriesData = [
+    {
+      title: "Electronics",
+      description: "Our specialized packaging solutions protect sensitive electronic components from static, moisture, and physical damage during transportation and storage."
+    },
+    {
+      title: "Automotive",
+      description: "We provide specialized packaging solutions for automotive parts that offer excellent protection against corrosion, scratches, and damage during transit."
+    },
+    {
+      title: "Industrial & Manufacturing",
+      description: "Our heavy-duty packaging materials are designed to withstand the rigors of industrial environments, protecting components and finished goods throughout the supply chain."
+    },
+    {
+      title: "Retail & E-commerce",
+      description: "We offer customizable packaging options that enhance product presentation while providing adequate protection for retail and e-commerce applications."
+    },
+    {
+      title: "Pharmaceutical",
+      description: "Our packaging solutions meet the stringent requirements of the pharmaceutical industry, ensuring product integrity and compliance with regulatory standards."
+    },
+    {
+      title: "Food & Beverage",
+      description: "We provide food-grade packaging materials that maintain product freshness and comply with safety regulations for food contact materials."
+    }
   ];
 
   // Updated testimonials with the new content
@@ -68,21 +176,17 @@ function Clients() {
   return (
     <Container maxWidth="lg" sx={{ 
       px: isMobile ? 3 : 4,
-      // Add more vertical spacing throughout the page on mobile
-      "& > .MuiBox-root": {
-        mb: isMobile ? 10 : 8
-      }
+      py: spacing.section / 2, // Add consistent padding to top and bottom of container
     }}>
       {/* Clients Header */}
       <Box sx={{ 
         textAlign: "center", 
-        py: isMobile ? 8 : 8, 
-        mt: isMobile ? 5 : 0 
+        mb: spacing.section,
       }}>
         <Typography 
           variant={isMobile ? "h4" : "h3"} 
           component="h1" 
-          sx={{ fontWeight: "bold", mb: 4 }} 
+          sx={{ fontWeight: "bold", mb: spacing.headingToContent / 1.5 }} 
         >
           Our Clients
         </Typography>
@@ -92,14 +196,12 @@ function Clients() {
             color: "#555", 
             maxWidth: "800px", 
             mx: "auto", 
-            px: isMobile ? 3 : 2 
+            mb: spacing.headingToContent / 1.5,
           }}
         >
           We're proud to serve a diverse range of industries with our premium packaging solutions.
         </Typography>
         <Divider sx={{ 
-          mt: isMobile ? 6 : 5,
-          mb: isMobile ? 7 : 6,
           width: "80px", 
           mx: "auto", 
           borderColor: "#0d47a1", 
@@ -107,106 +209,62 @@ function Clients() {
         }} />
       </Box>
       
-      {/* Industries We Serve - With improved spacing */}
-      <Box sx={{ mb: isMobile ? 12 : 10 }}>
+      {/* Industries We Serve - Consistent spacing */}
+      <Box sx={{ mb: spacing.section }}>
         <Typography 
           variant={isMobile ? "h5" : "h4"} 
           component="h2" 
           sx={{ 
             textAlign: "center", 
-            mb: isMobile ? 6 : 5, 
+            mb: spacing.headingToContent, 
             fontWeight: "medium" 
           }}
         >
           Industries We Serve
         </Typography>
         
-        <Grid container spacing={isMobile ? 5 : 3} sx={{ mb: isMobile ? 6 : 4 }}>
-          {[
-            {
-              title: "Electronics",
-              description: "Our specialized packaging solutions protect sensitive electronic components from static, moisture, and physical damage during transportation and storage."
-            },
-            {
-              title: "Automotive",
-              description: "We provide specialized packaging solutions for automotive parts that offer excellent protection against corrosion, scratches, and damage during transit."
-            },
-            {
-              title: "Industrial & Manufacturing",
-              description: "Our heavy-duty packaging materials are designed to withstand the rigors of industrial environments, protecting components and finished goods throughout the supply chain."
-            },
-            {
-              title: "Retail & E-commerce",
-              description: "We offer customizable packaging options that enhance product presentation while providing adequate protection for retail and e-commerce applications."
-            },
-            {
-              title: "Pharmaceutical",
-              description: "Our packaging solutions meet the stringent requirements of the pharmaceutical industry, ensuring product integrity and compliance with regulatory standards."
-            },
-            {
-              title: "Food & Beverage",
-              description: "We provide food-grade packaging materials that maintain product freshness and comply with safety regulations for food contact materials."
-            }
-          ].map((industry, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Paper 
-                elevation={2} 
-                sx={{ 
-                  p: isMobile ? 5 : 3, 
-                  height: "100%", 
-                  borderLeft: "4px solid #0d47a1",
-                  borderRadius: "4px",
-                  transition: "transform 0.2s ease-in-out",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
-                    boxShadow: 3
-                  }
-                }}
-              >
-                <Typography 
-                  variant="h6" 
-                  gutterBottom 
-                  sx={{ 
-                    color: "#0d47a1", 
-                    fontSize: isMobile ? "1.25rem" : "1.15rem",
-                    mb: isMobile ? 3 : 2
-                  }}
-                >
-                  {industry.title}
-                </Typography>
-                <Typography 
-                  variant="body2" 
-                  sx={{ 
-                    fontSize: isMobile ? "1rem" : "0.875rem",
-                    lineHeight: 1.6
-                  }}
-                >
-                  {industry.description}
-                </Typography>
-              </Paper>
+        <Grid container spacing={3} sx={{ mb: spacing.contentToContent }}>
+          {industriesData.map((industry, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <IndustryCard industry={industry} />
             </Grid>
           ))}
         </Grid>
       </Box>
       
-      {/* Client Logos - Improved Scrolling Section */}
-      <ScrollingClientsSection clients={clients} isMobile={isMobile} />
-      
-      {/* Testimonials - Updated with improved spacing */}
-      <Box sx={{ mb: isMobile ? 12 : 8 }}>
+      {/* Client Logos - With consistent spacing */}
+      <Box sx={{ mb: spacing.section }}>
         <Typography 
           variant={isMobile ? "h5" : "h4"} 
           component="h2" 
           sx={{ 
             textAlign: "center", 
-            mb: isMobile ? 6 : 4, 
+            mb: spacing.headingToContent, 
+            fontWeight: "medium" 
+          }}
+        >
+          Trusted By Industry Leaders
+        </Typography>
+        
+        {/* Scrolling clients component */}
+        <ScrollingClientsDisplay clients={clients} isMobile={isMobile} />
+      </Box>
+      
+      {/* Testimonials - With consistent spacing */}
+      <Box sx={{ mb: spacing.section }}>
+        <Typography 
+          variant={isMobile ? "h5" : "h4"} 
+          component="h2" 
+          sx={{ 
+            textAlign: "center", 
+            mb: spacing.headingToContent, 
             fontWeight: "medium" 
           }}
         >
           Client Testimonials
         </Typography>
         
-        <Grid container spacing={isMobile ? 6 : 4}>
+        <Grid container spacing={3}>
           {testimonials.map((testimonial) => (
             <Grid item xs={12} md={4} key={testimonial.id}>
               <Card 
@@ -226,16 +284,16 @@ function Clients() {
                 <CardContent sx={{ 
                   flexGrow: 1, 
                   position: "relative", 
-                  pt: isMobile ? 6 : 5, 
-                  px: isMobile ? 5 : 3, 
-                  pb: isMobile ? 5 : 4 
+                  pt: 4, 
+                  px: 3, 
+                  pb: 3 
                 }}>
                   <FormatQuoteIcon 
                     sx={{ 
                       position: "absolute", 
                       top: 16, 
                       left: 16, 
-                      fontSize: isMobile ? 42 : 32, 
+                      fontSize: isMobile ? 40 : 32, 
                       color: "#e0e0e0",
                       transform: "scaleX(-1)"
                     }} 
@@ -244,9 +302,9 @@ function Clients() {
                     variant="body1" 
                     sx={{ 
                       pl: 2, 
-                      mb: isMobile ? 5 : 4, 
+                      mb: 3, 
                       fontStyle: "italic", 
-                      fontWeight: "bold",
+                      fontWeight: "medium",
                       fontSize: isMobile ? "1.05rem" : "0.95rem",
                       lineHeight: 1.7
                     }}
@@ -259,7 +317,7 @@ function Clients() {
                       sx={{ 
                         fontWeight: "medium",
                         fontSize: isMobile ? "1.1rem" : "1rem",
-                        mb: isMobile ? 1 : 0.5
+                        mb: 0.5
                       }}
                     >
                       {testimonial.author}
@@ -279,33 +337,34 @@ function Clients() {
         </Grid>
       </Box>
       
-      {/* Call to Action - With improved spacing */}
+      {/* Call to Action - With consistent spacing */}
       <Box 
         sx={{ 
           textAlign: "center", 
-          p: isMobile ? 7 : 5, 
-          mb: isMobile ? 10 : 8, 
-          bgcolor: "#0d47a1", 
+          p: spacing.contentToContent, 
+          mb: spacing.section / 2, // Reduced bottom margin for last element
+          background: "linear-gradient(135deg, #0d47a1, #1565c0)", 
           color: "white",
-          borderRadius: "8px"
+          borderRadius: "8px",
+          boxShadow: "0 6px 20px rgba(13, 71, 161, 0.25)"
         }}
       >
         <Typography 
           variant={isMobile ? "h5" : "h4"} 
           component="h2" 
-          sx={{ mb: isMobile ? 4 : 3 }}
+          sx={{ mb: spacing.headingToContent / 2 }}
         >
           Join Our Impressive Client List
         </Typography>
         <Typography 
           variant="body1" 
           sx={{ 
-            mb: isMobile ? 5 : 4, 
+            mb: spacing.headingToContent, 
             maxWidth: "800px", 
             mx: "auto",
             fontSize: isMobile ? "1.05rem" : "1rem",
             lineHeight: 1.6,
-            px: isMobile ? 3 : 2
+            px: 2
           }}
         >
           Experience the quality, reliability, and excellent service that has made B.K. Polymers the 
@@ -316,16 +375,20 @@ function Clients() {
           href="/contact"
           sx={{ 
             display: "inline-block", 
-            px: isMobile ? 5 : 4, 
-            py: isMobile ? 2.5 : 1.5, 
+            px: 4, 
+            py: 1.5, 
             bgcolor: "white", 
             color: "#0d47a1", 
             borderRadius: "6px",
             fontWeight: "bold",
             textDecoration: "none",
             fontSize: isMobile ? "1.1rem" : "1rem",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            transition: "all 0.3s ease",
             "&:hover": {
-              bgcolor: "#f5f5f5"
+              bgcolor: "#f5f5f5",
+              transform: "translateY(-2px)",
+              boxShadow: "0 6px 16px rgba(0,0,0,0.15)"
             }
           }}
         >
@@ -336,8 +399,8 @@ function Clients() {
   );
 }
 
-// Improved Scrolling Clients Section Component
-const ScrollingClientsSection = ({ clients, isMobile }) => {
+// Improved Scrolling Clients Component with consistent spacing
+const ScrollingClientsDisplay = ({ clients, isMobile }) => {
   const scrollRef = useRef(null);
   const [cloneCount, setCloneCount] = useState(3); // Number of times to clone the list
   
@@ -395,71 +458,52 @@ const ScrollingClientsSection = ({ clients, isMobile }) => {
   
   return (
     <Box sx={{ 
-      mb: isMobile ? 12 : 8, 
-      mt: isMobile ? 6 : 2, 
-      py: isMobile ? 4 : 2  
+      position: 'relative', 
+      width: '100%', 
+      overflow: 'hidden',
+      py: 3  
     }}>
-      <Typography 
-        variant={isMobile ? "h5" : "h4"} 
-        component="h2" 
-        sx={{ 
-          textAlign: "center", 
-          mb: isMobile ? 6 : 4, 
-          fontWeight: "medium" 
+      <Box
+        ref={scrollRef}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: 'fit-content',
         }}
       >
-        Trusted By Industry Leaders
-      </Typography>
-      
-      <Box sx={{ 
-        position: 'relative', 
-        width: '100%', 
-        overflow: 'hidden',
-        my: isMobile ? 5 : 2, 
-        py: isMobile ? 4 : 2  
-      }}>
-        <Box
-          ref={scrollRef}
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            width: 'fit-content',
-          }}
-        >
-          {repeatedClients.map((client, index) => (
-            <Box
-              key={`${client.id}-${index}`}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: isMobile ? 4 : 2, 
-                height: isMobile ? 120 : 120,
-                width: isMobile ? 160 : 160,
-                backgroundColor: 'white',
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                p: isMobile ? 4 : 3,
-                transition: "transform 0.3s, box-shadow 0.3s",
-                "&:hover": {
-                  transform: "scale(1.05)", // Reduced scale effect
-                  boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
-                }
+        {repeatedClients.map((client, index) => (
+          <Box
+            key={`${client.id}-${index}`}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mx: 2.5, 
+              height: 120,
+              width: 160,
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+              p: 2,
+              transition: "transform 0.3s, box-shadow 0.3s",
+              "&:hover": {
+                transform: "scale(1.05)", // Reduced scale effect
+                boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
+              }
+            }}
+          >
+            <Box 
+              component="img" 
+              src={client.logo} 
+              alt={client.name}
+              sx={{ 
+                maxWidth: '100%', 
+                maxHeight: '80px', 
+                objectFit: 'contain' 
               }}
-            >
-              <Box 
-                component="img" 
-                src={client.logo} 
-                alt={client.name}
-                sx={{ 
-                  maxWidth: '100%', 
-                  maxHeight: isMobile ? '70px' : '80px', 
-                  objectFit: 'contain' 
-                }}
-              />
-            </Box>
-          ))}
-        </Box>
+            />
+          </Box>
+        ))}
       </Box>
     </Box>
   );
