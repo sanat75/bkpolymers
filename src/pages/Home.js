@@ -162,114 +162,143 @@ function Home() {
         {/* Clients Section */}
         <ScrollingClientsSection />
         
-       {/* Mission & Values Combined Section */}
-<Box sx={{ 
-  mb: { xs: 4, md: 6 }, 
-  bgcolor: "#f5f5f5", 
-  p: { xs: 3, sm: 4 }, 
-  borderRadius: 2,
-  mx: { xs: 2, sm: 0 },
-  maxWidth: "100%",  // Add max width
-  boxSizing: "border-box", // Ensure padding is included in width calculation
-  overflow: "hidden"  // Prevent content from spilling out
-}}>
-  <Typography 
-    variant="h4" 
-    component="h2" 
-    sx={{ 
-      mb: { xs: 2, md: 3 }, 
-      textAlign: "center", 
-      fontWeight: "medium", 
-      color: "#0d47a1",
-      fontSize: { xs: "1.8rem", sm: "2.3rem" },
-    }}
-  >
-    Our Mission & Values
-  </Typography>
-  
-  {/* Mission Statement */}
-  <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
-    <Typography 
-      variant="body1" 
-      sx={{ 
-        fontSize: { xs: "1.1rem", sm: "1.2rem" },
-        lineHeight: 1.6,
-        maxWidth: "800px", 
-        mx: "auto" 
-      }}
-    >
-      To provide premium packaging solutions that meet and exceed customer expectations,
-      ensuring the highest quality, sustainability, and innovation standards.
-    </Typography>
-  </Box>
-  
-  {/* Core Values */}
-  <Grid 
-    container 
-    spacing={{ xs: 2, md: 4 }}
-    sx={{ width: "100%", mx: 0 }} // Ensure grid takes proper width
-  >
-    <Grid item xs={12} sm={6} md={4}>
-      <Paper elevation={3} sx={{ p: { xs: 2, sm: 3 }, height: "100%", borderTop: "4px solid #0d47a1" }}>
-        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-          <VerifiedIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
+        {/* Mission & Values Combined Section */}
+        <Box sx={{ 
+          mb: { xs: 4, md: 6 }, 
+          bgcolor: "#f5f5f5", 
+          p: { xs: 3, sm: 4 }, 
+          borderRadius: 2,
+          mx: { xs: 2, sm: 0 },
+          maxWidth: "100%",
+          boxSizing: "border-box",
+          overflow: "hidden"
+        }}>
           <Typography 
-            variant="h6" 
-            sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
+            variant="h4" 
+            component="h2" 
+            sx={{ 
+              mb: { xs: 2, md: 3 }, 
+              textAlign: "center", 
+              fontWeight: "medium", 
+              color: "#0d47a1",
+              fontSize: { xs: "1.8rem", sm: "2.3rem" },
+            }}
           >
-            Quality
+            Our Mission & Values
           </Typography>
-        </Box>
-        <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
-          We are committed to providing the highest quality products through rigorous testing 
-          and quality control processes.
-        </Typography>
-      </Paper>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Paper elevation={3} sx={{ p: { xs: 2, sm: 3 }, height: "100%", borderTop: "4px solid #0d47a1" }}>
-        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-          <AutorenewIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
-          <Typography 
-            variant="h6" 
-            sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
+          
+          {/* Mission Statement */}
+          <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
+            <Typography 
+              variant="body1" 
+              sx={{ 
+                fontSize: { xs: "1.1rem", sm: "1.2rem" },
+                lineHeight: 1.6,
+                maxWidth: "800px", 
+                mx: "auto" 
+              }}
+            >
+              To provide premium packaging solutions that meet and exceed customer expectations,
+              ensuring the highest quality, sustainability, and innovation standards.
+            </Typography>
+          </Box>
+          
+          {/* Core Values */}
+          <Grid 
+            container 
+            spacing={{ xs: 2, md: 4 }}
+            justifyContent="center"
+            alignItems="stretch"
+            sx={{ 
+              width: "100%", 
+              m: 0,
+              px: { xs: 0, md: 0 }
+            }}
           >
-            Innovation
-          </Typography>
+            <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: { xs: 2, sm: 3 }, 
+                  height: "100%", 
+                  width: "100%",
+                  borderTop: "4px solid #0d47a1",
+                  display: "flex",
+                  flexDirection: "column"
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <VerifiedIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
+                  <Typography 
+                    variant="h6" 
+                    sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
+                  >
+                    Quality
+                  </Typography>
+                </Box>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
+                  We are committed to providing the highest quality products through rigorous testing 
+                  and quality control processes.
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: { xs: 2, sm: 3 }, 
+                  height: "100%", 
+                  width: "100%",
+                  borderTop: "4px solid #0d47a1",
+                  display: "flex",
+                  flexDirection: "column"
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <AutorenewIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
+                  <Typography 
+                    variant="h6" 
+                    sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
+                  >
+                    Innovation
+                  </Typography>
+                </Box>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
+                  We constantly evolve our processes and products to stay at the forefront of packaging 
+                  technology.
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: { xs: 2, sm: 3 }, 
+                  height: "100%", 
+                  width: "100%",
+                  borderTop: "4px solid #0d47a1",
+                  display: "flex",
+                  flexDirection: "column"
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                  <RecyclingIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
+                  <Typography 
+                    variant="h6" 
+                    sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
+                  >
+                    Sustainability
+                  </Typography>
+                </Box>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
+                  We prioritize environmentally responsible practices throughout our operations.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
         </Box>
-        <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
-          We constantly evolve our processes and products to stay at the forefront of packaging 
-          technology.
-        </Typography>
-      </Paper>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Paper 
-        elevation={3} 
-        sx={{ 
-          p: { xs: 2, sm: 3 }, 
-          height: "100%", 
-          borderTop: "4px solid #0d47a1",
-          maxWidth: "100%", // Ensure contained width
-          boxSizing: "border-box" 
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-          <RecyclingIcon sx={{ mr: 1, color: "#0d47a1", fontSize: { xs: 24, sm: 30 } }} />
-          <Typography 
-            variant="h6" 
-            sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem" } }}
-          >
-            Sustainability
-          </Typography>
-        </Box>
-        <Typography sx={{ fontSize: { xs: "1rem", sm: "1.1rem" }, lineHeight: 1.5 }}>
-          We prioritize environmentally responsible practices throughout our operations.
-        </Typography>
-      </Paper>
-    </Grid>
-  </Grid>
-</Box>
         
         {/* Contact Section */}
         <Box sx={{ 

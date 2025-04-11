@@ -92,14 +92,14 @@ const LeadershipCard = ({ name, title, description, photo }) => {
               }}
             />
           </Box>
-          <Typography variant={isMobile ? "h6" : "h5"} sx={{ mb: 1, fontWeight: 500 }}>
+          <Typography variant={isMobile ? "h6" : "h5"} sx={{ mb: 1, fontWeight: 700 }}>
             {name}
           </Typography>
           <Typography variant="subtitle1" sx={{ mb: 2, color: "text.secondary" }}>
             {title}
           </Typography>
           
-          <Typography variant="body2" sx={{ color: "text.primary", mt: "auto" }}>
+          <Typography variant="body2" sx={{ color: "text.primary", mt: "auto", fontWeight: 700 }}>
             Read more
           </Typography>
         </Box>
@@ -114,7 +114,7 @@ const LeadershipCard = ({ name, title, description, photo }) => {
           backfaceVisibility: "hidden",
           p: { xs: 2, sm: 2 }
         }}>
-          <Typography variant={isMobile ? "h6" : "h5"} sx={{ mb: 2, fontWeight: 500 }}>
+          <Typography variant={isMobile ? "h6" : "h5"} sx={{ mb: 2, fontWeight: 700 }}>
             {name}
           </Typography>
           <Typography variant="subtitle1" sx={{ mb: 2, color: "text.secondary" }}>
@@ -123,7 +123,7 @@ const LeadershipCard = ({ name, title, description, photo }) => {
           <Typography variant="body2" sx={{ mb: 2 }}>
             {description}
           </Typography>
-          <Typography variant="body2" sx={{ mt: "auto", color: "text.primary" }}>
+          <Typography variant="body2" sx={{ mt: "auto", color: "text.primary", fontWeight: 700 }}>
             Return 
           </Typography>
         </Box>
